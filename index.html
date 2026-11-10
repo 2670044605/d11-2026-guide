@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-density="normal" data-fontscale="m">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>首页 · 仪表盘 · 2026 双十一指南</title>
+<link rel="stylesheet" href="site.css?v=7">
+<meta name="description" content="2026 全球双十一（11.11）值得参加的活动与商品指南：线上线下、中国大陆 + 跨境 + 区域市场，每条关键事实标注来源与可信等级（一手/媒体/单源/存疑），含 148 个可核验来源链接。">
+<meta name="theme-color" content="#0f766e">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://tsurezure.jerrylabs.dev/d11-2026-guide/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="2026 全球双十一完全指南 · 活动与商品（核验版）">
+<meta property="og:description" content="2026 全球双十一（11.11）值得参加的活动与商品指南：线上线下、中国大陆 + 跨境 + 区域市场，每条关键事实标注来源与可信等级（一手/媒体/单源/存疑），含 148 个可核验来源链接。">
+<meta property="og:url" content="https://tsurezure.jerrylabs.dev/d11-2026-guide/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026 全球双十一完全指南 · 活动与商品（核验版）">
+</head>
+<body>
+<header class="topbar">
+  <button class="tb-btn menu-toggle" id="menuBtn" aria-label="目录">☰ 目录</button>
+  <div class="brandmark"><a href="index.html" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
+    <span class="logo">11</span><span class="bt">双十一完全指南<small>2026 · 核验版</small></span></a></div>
+  <div class="searchbox">
+    <span class="si">⌕</span>
+    <input id="q" type="search" placeholder="全文检索：国补 / AliExpress / 黑五 / 智能眼镜 …" autocomplete="off" aria-label="全文检索">
+    <kbd>/</kbd><div class="results" id="results"></div>
+  </div>
+  <span class="searchcount" id="searchcount"></span>
+  <div class="tb-actions">
+    <button class="tb-btn opt" id="densityBtn" title="切换信息密度">密度</button>
+    <button class="tb-btn opt" id="fontBtn" title="切换字号">A<sup>±</sup></button>
+    <button class="tb-btn" id="themeBtn" title="深浅色">◐ 深色</button>
+    <button class="tb-btn opt" id="expandBtn" title="展开/折叠全部">全部展开</button>
+  </div>
+</header>
+<div class="scrim" id="scrim"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<h4>内容导航</h4>
+<a class="nav-doc" href="index.html">⌂ 首页 · 仪表盘<small>全局检索 · 速查 KPI</small></a>
+<h4>开始</h4>
+<a class="nav-doc" href="pages/p00.html" data-target="p00">一页速查<small>结论 · 时间轴 · 已确认/未确认</small></a>
+<h4>核心事实</h4>
+<a class="nav-doc" href="pages/p10.html" data-target="p10">总纲 · 已核验事实<small>此刻行动 · 国补原文 · 监管 · 证据污染</small></a>
+<h4>中国大陆</h4>
+<a class="nav-doc" href="pages/p20.html" data-target="p20">大陆详版<small>玩法 · 品类型号 · 线下 · 证据缺口</small></a>
+<a class="nav-doc" href="pages/p21.html" data-target="p21">汽车·出行·线下·防坑<small>国补边界 · 汽车细则 · 工具箱</small></a>
+<h4>跨境电商</h4>
+<a class="nav-doc" href="pages/p30.html" data-target="p30">跨境速读 · 一手核验<small>AliExpress 官方通稿 · 实操九条</small></a>
+<a class="nav-doc" href="pages/p31.html" data-target="p31">跨境详版<small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></a>
+<h4>区域市场</h4>
+<a class="nav-doc" href="pages/p40.html" data-target="p40">区域速读<small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></a>
+<a class="nav-doc" href="pages/p41.html" data-target="p41">区域详版<small>站内官方日历 · 完整核验记录</small></a>
+<div class="legend">
+      <b>证据等级图例</b>
+      <div class="lg"><i style="background:var(--brand)"></i>一手 · 政府/平台官网原文</div>
+      <div class="lg"><i style="background:var(--amber-line)"></i>媒体 · 2026 署名报道</div>
+      <div class="lg"><i style="background:var(--blue-line)"></i>单源 / 推断 · 待验证</div>
+      <div class="lg"><i style="background:var(--red-line)"></i>存疑 / 未查到 · 不采信</div>
+      <div class="lg"><i style="background:#b9c0c8"></i>访问受限 · 页面打不开</div>
+    </div>
+    <div class="meta">8 份文档 · 148 个来源链接<br>单页离线 · 无外部请求<br>键盘：<b>/</b> 检索 · <b>Esc</b> 关闭</div>
+  </aside>
+  <main class="main">
+<section class="hero">
+  <div class="hero-bar">2026 全球双十一 · 完全指南 <span>编制 2026-11-10 23:34 UTC+8 · 线上线下 / 中国大陆 + 跨境 + 区域市场</span></div>
+  <div class="hero-in">
+    <h1>值得参加的活动与商品，按可信度分层整理</h1>
+    <p class="sub">本届中文搜索结果被大量 AI 导购文污染——往年 GMV 被套上 2026 年份、政府门户被注入软文、三种「官方定档」日期互相矛盾。本指南宁可写「未查到」，也不拿往年规则填充。每条关键事实都标了来源与可信等级。</p>
+    <div class="kpis">
+      <div class="kpi"><b>8</b><span>份文档 · 约 19.6 万字符</span></div>
+      <div class="kpi"><b>148</b><span>个可核验来源链接</span></div>
+      <div class="kpi"><b>6+4</b><span>国补品类 · 券后 15%</span></div>
+      <div class="kpi"><b>11/13</b><span>天猫现货截止</span></div>
+      <div class="kpi"><b>11/27</b><span>黑五 · 相隔 16 天</span></div>
+    </div>
+  </div>
+</section>
+<div class="now">
+  <div class="now-h"><span class="dot"></span>现在这一刻 · 11/10 周二 23:34 该做的 6 件事</div>
+  <ol>
+    <li><b>别信「尾款作废」</b>——天猫预售尾款 10/25 已截止，<b>现货到 11/13 23:59</b>，还有约 3 天，大件可以睡醒再比价。</li>
+    <li><b>查已付订单的价保</b>——京东 30 天价保、天猫/淘宝价保中心，逐单一键申请差价。</li>
+    <li><b>截图存证</b>——券后价、国补后价、赠品清单逐页截图；今年监管明确自查「先涨价后降价」。</li>
+    <li><b>确认国补资格与本地额度</b>——进平台「国补/以旧换新专区」，额度先到先得、年底易耗尽。</li>
+    <li><b>拒绝一切「红包口令」</b>——「搜索 XXX 领大额红包」是返利引流话术，不是平台福利。</li>
+    <li><b>跨境看时差</b>——各站以本地时区开跑，WIB 比北京晚 1 小时，别照搬国内 0 点。</li>
+  </ol>
+</div>
+<div class="entries"><h3>全部文档</h3>
+<div class="grp"><span>开始</span></div>
+
+<a class="entry" href="pages/p00.html">
+  <span class="en">01</span>
+  <span class="ei"><b>一页速查</b><small>结论 · 时间轴 · 已确认/未确认</small></span>
+  <span class="ea">→</span>
+</a>
+<div class="grp"><span>核心事实</span></div>
+
+<a class="entry" href="pages/p10.html">
+  <span class="en">11</span>
+  <span class="ei"><b>总纲 · 已核验事实</b><small>此刻行动 · 国补原文 · 监管 · 证据污染</small></span>
+  <span class="ea">→</span>
+</a>
+<div class="grp"><span>中国大陆</span></div>
+
+<a class="entry" href="pages/p20.html">
+  <span class="en">21</span>
+  <span class="ei"><b>大陆详版</b><small>玩法 · 品类型号 · 线下 · 证据缺口</small></span>
+  <span class="ea">→</span>
+</a>
+
+<a class="entry" href="pages/p21.html">
+  <span class="en">22</span>
+  <span class="ei"><b>汽车·出行·线下·防坑</b><small>国补边界 · 汽车细则 · 工具箱</small></span>
+  <span class="ea">→</span>
+</a>
+<div class="grp"><span>跨境电商</span></div>
+
+<a class="entry" href="pages/p30.html">
+  <span class="en">31</span>
+  <span class="ei"><b>跨境速读 · 一手核验</b><small>AliExpress 官方通稿 · 实操九条</small></span>
+  <span class="ea">→</span>
+</a>
+
+<a class="entry" href="pages/p31.html">
+  <span class="en">32</span>
+  <span class="ei"><b>跨境详版</b><small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></span>
+  <span class="ea">→</span>
+</a>
+<div class="grp"><span>区域市场</span></div>
+
+<a class="entry" href="pages/p40.html">
+  <span class="en">41</span>
+  <span class="ei"><b>区域速读</b><small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></span>
+  <span class="ea">→</span>
+</a>
+
+<a class="entry" href="pages/p41.html">
+  <span class="en">42</span>
+  <span class="ei"><b>区域详版</b><small>站内官方日历 · 完整核验记录</small></span>
+  <span class="ea">→</span>
+</a></div></main>
+</div>
+<button class="toTop" id="toTop" aria-label="回到顶部">↑</button>
+<script src="site.js?v=7"></script>
+
+<script>
+(function(){
+  var D=window.D11; if(!D)return;
+  var q=D.$('#q'), res=D.$('#results'), cnt=D.$('#searchcount');
+  if(!q||!res)return;
+  var IDX=[];
+  if(window.D11_IDX&&window.D11_IDX.length){IDX=window.D11_IDX}
+  else{var sd=D.$('#searchData'); if(sd){try{IDX=JSON.parse(sd.textContent)}catch(e){}}}
+  var loading=false, pending=null;
+  function ensureIndex(cb){
+    if(IDX.length){cb();return}
+    if(!loading){
+      loading=true;
+      var sc=document.createElement('script');
+      sc.src=(location.pathname.indexOf('/pages/')>=0?'../':'')+'search-index.js?v='+window.D11_VER;
+      sc.onload=function(){IDX=window.D11_IDX||[];loading=false;var p=pending;pending=null;if(p)p()};
+      sc.onerror=function(){loading=false;var p=pending;pending=null;if(p)p()};
+      document.head.appendChild(sc);
+    }
+    pending=cb;
+  }
+  var timer=null, marks=[];
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function hi(text,terms){var out=esc(text);terms.forEach(function(t){if(!t)return;
+    out=out.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<b>$1</b>')});return out}
+  function clearMarks(){
+    marks.forEach(function(m){var p=m.parentNode;if(p){p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()}});
+    marks=[]; D.$$('.doc.flash').forEach(function(d){d.classList.remove('flash')});
+  }
+  /* 在指定根节点内把命中词包成 <mark> */
+  function highlightIn(root,terms){
+    if(!terms||!terms.length||!root) return 0;
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false),nodes=[];
+    while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE|MARK)$/.test(n.parentNode.nodeName))nodes.push(n)}
+    var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
+    nodes.forEach(function(n){var v=n.nodeValue;if(!v)return;re.lastIndex=0;if(!re.test(v))return;re.lastIndex=0;
+      var fr=document.createDocumentFragment(),last=0,m;
+      while((m=re.exec(v))!==null){
+        fr.appendChild(document.createTextNode(v.slice(last,m.index)));
+        var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);
+        last=m.index+m[0].length;
+      }
+      if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
+      n.parentNode.replaceChild(fr,n);
+    });
+    return marks.length;
+  }
+  function jump(href,anchor,terms){
+    if(href && href.indexOf('.html')>=0){
+      var cur=location.pathname.split('/').pop();
+      var tgt=href.split('#')[0];
+      if(tgt===cur){
+        /* 同一页：就地高亮 + 滚动，不重新导航 */
+        clearMarks();
+        var same=document.getElementById(anchor);
+        var scope=(same&&same.closest('.doc'))||document.querySelector('.doc')||document.body;
+        highlightIn(scope,terms);
+        if(same) same.scrollIntoView({behavior:'smooth',block:'start'});
+        var dd=(scope.classList&&scope.classList.contains('doc'))?scope:null;
+        if(dd){dd.classList.add('flash');setTimeout(function(){dd.classList.remove('flash')},1600)}
+        res.classList.remove('on'); D.closeMenu();
+        return;
+      }
+      var url=tgt+(anchor?'#'+anchor:'');
+      try{D.store('d11_jump_terms',JSON.stringify(terms||[]))}catch(e){}
+      location.href=url; return;
+    }
+    var d=document.getElementById(href.replace('#','')); if(!d)return;
+    d.classList.remove('collapsed');
+    var target=(anchor&&document.getElementById(anchor))||d;
+    clearMarks();
+    if(terms&&terms.length){
+      var body=d.querySelector('.doc-body')||document.body;
+      var w=document.createTreeWalker(body,NodeFilter.SHOW_TEXT,null,false),nodes=[];
+      while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE)$/.test(n.parentNode.nodeName))nodes.push(n)}
+      var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
+      nodes.forEach(function(n){var v=n.nodeValue;if(!re.test(v))return;re.lastIndex=0;
+        var fr=document.createDocumentFragment(),last=0,m;
+        while((m=re.exec(v))!==null){fr.appendChild(document.createTextNode(v.slice(last,m.index)));
+          var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);last=m.index+m[0].length}
+        if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
+        if(marks.length<400)n.parentNode.replaceChild(fr,n)});
+    }
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+    d.classList.add('flash');setTimeout(function(){d.classList.remove('flash')},1600);
+    res.classList.remove('on'); D.closeMenu();
+  }
+  function render(){
+    var v=q.value.trim();
+    if(!v){res.classList.remove('on');cnt.textContent='';clearMarks();return}
+    if(!IDX.length){cnt.textContent='加载索引…';ensureIndex(function(){render()});return}
+    var terms=v.toLowerCase().split(/\s+/).filter(Boolean);
+    var hits=IDX.filter(function(it){return terms.every(function(t){return it.x.toLowerCase().indexOf(t)>=0})});
+    cnt.textContent=hits.length?hits.length+' 条命中':'无结果';
+    var out='<div class="res-h">'+hits.length+' 条命中 · 前 40 条 · 回车跳到第一条</div>';
+    if(!hits.length)out+='<div class="res-empty">没有匹配内容。试试「国补」「15%」「AliExpress」「黑五」「价保」。</div>';
+    hits.slice(0,40).forEach(function(it,i){
+      out+='<a class="res-i" tabindex="0" data-i="'+i+'" data-p="'+esc(it.p||'')+'" data-a="'+esc(it.a||'')+'">'
+        +'<span class="rt">'+esc(it.t)+'</span><span class="rq">'+hi(it.x,terms)+'</span></a>';
+    });
+    res.innerHTML=out;res._hits=hits;res._terms=terms;res.classList.add('on');
+    D.$$('.res-i',res).forEach(function(el){
+      function go(){var h=res._hits[+el.dataset.i];jump(el.dataset.p||('#'+h.d),el.dataset.a,res._terms)}
+      el.addEventListener('click',go);el.addEventListener('keydown',function(e){if(e.key==='Enter')go()});
+    });
+  }
+  q.addEventListener('focus',function(){ensureIndex(function(){})});
+  q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(render,140)});
+  q.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){q.value='';res.classList.remove('on');cnt.textContent='';clearMarks();q.blur()}
+    if(e.key==='Enter'&&res.classList.contains('on')){var f=res.querySelector('.res-i');if(f)f.click()}
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();q.select()}
+  });
+  document.addEventListener('click',function(e){if(!e.target.closest('.searchbox'))res.classList.remove('on')});
+  /* 站内锚点：展开被折叠的文档 */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a.internal, a[href^="#doc-"], a[href^="#p"]');if(!a)return;
+    var d=document.getElementById(a.getAttribute('href').slice(1));
+    if(d&&d.classList.contains('doc'))d.classList.remove('collapsed');
+  });
+  /* 跨页跳转后：展开文档、滚到锚点、按存下的词高亮 */
+  try{
+    var savedTerms=[];
+    try{savedTerms=JSON.parse(D.load('d11_jump_terms','[]'))||[]}catch(e){}
+    D.store('d11_jump_terms','[]');
+    if(location.hash){
+      var aid;
+      try{aid=decodeURIComponent(location.hash.slice(1))}catch(e){aid=location.hash.slice(1)}
+      var d=document.getElementById(aid)||document.getElementById(aid.replace(/-h-.*$/,''));
+      if(d&&d.classList&&d.classList.contains('doc'))d.classList.remove('collapsed');
+      var go=function(){
+        var t=document.getElementById(aid);
+        if(t){t.scrollIntoView({block:'start'});}
+        else if(d){d.scrollIntoView({block:'start'})}
+      };
+      /* 等布局稳定后再滚，避免图片/表格回流导致位置偏移 */
+      requestAnimationFrame(function(){setTimeout(go,60)});
+      if(savedTerms.length){
+        setTimeout(function(){
+          clearMarks();
+          var scope=(document.getElementById(aid)||{}).closest?
+            (document.getElementById(aid)||{}).closest('.doc'):null;
+          scope=scope||document.querySelector('.doc');
+          highlightIn(scope||document.body,savedTerms);
+        },220);
+      }
+      window.addEventListener('load',function(){setTimeout(go,80)});
+    }
+  }catch(e){}
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,31 @@
+{
+  "total": 98,
+  "categories": {
+    "vps": 17,
+    "cloud": 14,
+    "software": 28,
+    "hardware": 13,
+    "retail": 7,
+    "travel": 5,
+    "lifestyle": 14
+  },
+  "statuses": {
+    "live": 27,
+    "upcoming": 1,
+    "regular": 55,
+    "expired": 1,
+    "unverified": 14
+  },
+  "verdicts": {
+    "worth": 17,
+    "conditional": 54,
+    "skip": 10,
+    "watch": 17
+  },
+  "evidence": {
+    "official-body": 95,
+    "official-search": 0,
+    "media": 0,
+    "unverified": 3
+  }
+}

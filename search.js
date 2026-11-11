@@ -11,7 +11,7 @@
 
   var VER=window.D11_VER||'12';
   var IDX=[];
-  var loading=false, pending=null;
+  var loading=false, pending=[];
   var timer=null, active=-1, hits=[], terms=[];
   var marks=[];
 
@@ -38,22 +38,19 @@
   function ensureIndex(cb){
     if(IDX.length){cb(true);return}
     if(window.D11_IDX&&window.D11_IDX.length){IDX=window.D11_IDX;cb(true);return}
-    if(loading){pending=cb;return}
+    pending.push(cb);
+    if(loading) return;
     loading=true;
+    function flush(ok){
+      loading=false;
+      var ps=pending;pending=[];
+      for(var i=0;i<ps.length;i++){try{ps[i](ok)}catch(e){}}
+    }
     var sc=document.createElement('script');
     sc.src=indexUrl();
     sc.async=true;
-    sc.onload=function(){
-      IDX=window.D11_IDX||[];
-      loading=false;
-      var p=pending;pending=null;
-      if(p) p(IDX.length>0);
-    };
-    sc.onerror=function(){
-      loading=false;
-      var p=pending;pending=null;
-      if(p) p(false);
-    };
+    sc.onload=function(){IDX=window.D11_IDX||[];flush(IDX.length>0)};
+    sc.onerror=function(){flush(false)};
     document.head.appendChild(sc);
   }
 

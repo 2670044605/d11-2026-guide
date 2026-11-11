@@ -43,7 +43,7 @@ jobs:
         env:
           BROWSER_ENGINE: ${{ matrix.engine }}
           LIVE_BASE: https://tsurezure.jerrylabs.dev/d11-2026-guide/
-        run: node qa/mobile-check.mjs
+        run: node qa/theme-probe.mjs
       - name: Upload raw verification evidence
         if: always()
         uses: actions/upload-artifact@v4

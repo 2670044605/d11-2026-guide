@@ -47,7 +47,7 @@ def hero(code):
 
 for code,p in DESIGNS.items():
  (ROOT/'assets'/f'{code}.svg').write_text(art(code))
- sections=(picks()+region_section()+article()) if code=='b' else (region_section()+picks()+article())
+ sections=(picks().replace('02 / A SHORTLIST','01 / THE EDIT')+region_section().replace('01 / EXPLORE','02 / AROUND THE WORLD')+article()) if code=='b' else (region_section()+picks()+article())
  body=strip(code)+header(code)+'<main id="main">'+hero(code)+'<div class="content wrap">'+sections+'</div></main>'+footer(code)
  (ROOT/f'{code}.html').write_text(f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="{'dark' if code=='d' else 'light'}"><title>{code.upper()} · {p['name']} — 设计预览</title><link rel="stylesheet" href="concepts.css?v=2"><script src="concepts.js?v=2" defer></script></head><body class="concept concept-{code}"><a class="skip" href="#main">跳到正文</a>{body}</body></html>''')
 print('Built four independent responsive design samples.')

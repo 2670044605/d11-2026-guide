@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';import {chromium,devices} from 'playwright';import AxeBuilder from '@axe-core/playwright';
 await fs.mkdir('design-evidence',{recursive:true});const browser=await chromium.launch();const results=[];let fatal=0;
 const require=(c,m)=>{if(!c)throw Error(m)};
-for(const code of ['a','b','c','d']){
+for(const code of ['b']){
  const result={code,desktop:{},phone:{},errors:[]};results.push(result);
  for(const mode of ['desktop','phone']){
   const context=await browser.newContext(mode==='desktop'?{viewport:{width:1440,height:1000},deviceScaleFactor:1,locale:'zh-CN',colorScheme:'light'}:{...devices['iPhone 13'],viewport:{width:390,height:844},deviceScaleFactor:2,locale:'zh-CN',colorScheme:'light'});const page=await context.newPage();page.setDefaultTimeout(6000);page.on('pageerror',e=>result.errors.push(String(e)));

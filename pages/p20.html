@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>大陆详版 · 2026 双十一指南</title>
-<link rel="stylesheet" href="../site.css?v=7">
+<link rel="stylesheet" href="../site.css?v=12">
+<script>
+(function(){try{var r=document.documentElement;var d=localStorage.getItem('d11_theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');r.dataset.theme=d;var n=localStorage.getItem('d11_density');if(n)r.dataset.density=n;var f=localStorage.getItem('d11_font');if(f)r.dataset.fontscale=f}catch(e){}})();
+</script>
+<script src="../site.js?v=12" defer></script>
+<script src="../search.js?v=12" defer></script>
 <meta name="description" content="2026 全球双十一（11.11）值得参加的活动与商品指南：线上线下、中国大陆 + 跨境 + 区域市场，每条关键事实标注来源与可信等级（一手/媒体/单源/存疑），含 148 个可核验来源链接。">
 <meta name="theme-color" content="#0f766e">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -18,53 +23,75 @@
 <meta name="twitter:title" content="大陆详版 · 2026 双十一指南">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <header class="topbar">
-  <button class="tb-btn menu-toggle" id="menuBtn" aria-label="目录">☰ 目录</button>
-  <div class="brandmark"><a href="../index.html" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
-    <span class="logo">11</span><span class="bt">双十一完全指南<small>2026 · 核验版</small></span></a></div>
-  <div class="searchbox">
-    <span class="si">⌕</span>
-    <input id="q" type="search" placeholder="全文检索：国补 / AliExpress / 黑五 / 智能眼镜 …" autocomplete="off" aria-label="全文检索">
-    <kbd>/</kbd><div class="results" id="results"></div>
+  <button class="tb-btn icon menu-toggle" id="menuBtn" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="brandmark"><a href="../index.html" aria-label="返回首页">
+    <span class="logo" aria-hidden="true">11</span><span class="bt">双十一完全指南<small>2026 · 核验版</small></span></a></div>
+  <div class="searchbox" id="searchbox">
+    <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></svg></span>
+    <input id="q" type="search" placeholder="搜索全文：国补 / AliExpress / 黑五 / 价保 …" name="q" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="全文检索" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="results">
+    <button class="sclear" id="searchClear" type="button" aria-label="清除搜索" hidden>✕</button>
+    <kbd aria-hidden="true">/</kbd>
+    <div class="results" id="results" role="listbox" aria-label="搜索结果"></div>
   </div>
-  <span class="searchcount" id="searchcount"></span>
+  <span class="searchcount" id="searchcount" role="status" aria-live="polite"></span>
   <div class="tb-actions">
-    <button class="tb-btn opt" id="densityBtn" title="切换信息密度">密度</button>
-    <button class="tb-btn opt" id="fontBtn" title="切换字号">A<sup>±</sup></button>
-    <button class="tb-btn" id="themeBtn" title="深浅色">◐ 深色</button>
-    <button class="tb-btn opt" id="expandBtn" title="展开/折叠全部">全部展开</button>
+    <button class="tb-btn icon" id="themeBtn" type="button" title="切换深浅色" aria-label="切换深浅色" aria-pressed="false">
+      <span class="theme-ico"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></span>
+    </button>
+    <button class="tb-btn icon" id="toolsBtn" type="button" title="阅读设置" aria-label="阅读设置" aria-expanded="false" aria-controls="toolsPop"><span class="aa" aria-hidden="true">Aa</span></button>
+    <button class="tb-btn icon opt" id="expandBtn" type="button" title="全部折叠" aria-label="全部折叠"><span aria-hidden="true">⇕</span></button>
+  </div>
+  <div class="tools-pop" id="toolsPop" hidden>
+    <div class="tp-head"><span>阅读设置</span><button class="tp-close" id="toolsClose" type="button" aria-label="关闭阅读设置">✕</button></div>
+    <div class="tp-group"><span class="tp-label">主题</span><div class="seg" data-pref="theme" role="group" aria-label="主题">
+      <button type="button" data-val="light">浅色</button><button type="button" data-val="dark">深色</button></div></div>
+    <div class="tp-group"><span class="tp-label">密度</span><div class="seg" data-pref="density" role="group" aria-label="信息密度">
+      <button type="button" data-val="compact">紧凑</button><button type="button" data-val="normal">标准</button><button type="button" data-val="relaxed">宽松</button></div></div>
+    <div class="tp-group"><span class="tp-label">字号</span><div class="seg" data-pref="font" role="group" aria-label="字号">
+      <button type="button" data-val="s">小</button><button type="button" data-val="m">中</button><button type="button" data-val="l">大</button></div></div>
+    <button class="tp-action" id="expandBtn2" type="button">全部折叠</button>
   </div>
 </header>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 <div class="scrim" id="scrim"></div>
 <div class="layout">
-<aside class="sidebar" id="sidebar">
-<h4>内容导航</h4>
-<a class="nav-doc" href="../index.html">⌂ 首页 · 仪表盘<small>全局检索 · 速查 KPI</small></a>
-<h4>开始</h4>
-<a class="nav-doc" href="p00.html" data-target="p00">一页速查<small>结论 · 时间轴 · 已确认/未确认</small></a>
-<h4>核心事实</h4>
-<a class="nav-doc" href="p10.html" data-target="p10">总纲 · 已核验事实<small>此刻行动 · 国补原文 · 监管 · 证据污染</small></a>
-<h4>中国大陆</h4>
-<a class="nav-doc active" href="p20.html" data-target="p20">大陆详版<small>玩法 · 品类型号 · 线下 · 证据缺口</small></a>
-<a class="nav-doc" href="p21.html" data-target="p21">汽车·出行·线下·防坑<small>国补边界 · 汽车细则 · 工具箱</small></a>
-<h4>跨境电商</h4>
-<a class="nav-doc" href="p30.html" data-target="p30">跨境速读 · 一手核验<small>AliExpress 官方通稿 · 实操九条</small></a>
-<a class="nav-doc" href="p31.html" data-target="p31">跨境详版<small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></a>
-<h4>区域市场</h4>
-<a class="nav-doc" href="p40.html" data-target="p40">区域速读<small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></a>
-<a class="nav-doc" href="p41.html" data-target="p41">区域详版<small>站内官方日历 · 完整核验记录</small></a>
-<div class="legend">
-      <b>证据等级图例</b>
-      <div class="lg"><i style="background:var(--brand)"></i>一手 · 政府/平台官网原文</div>
-      <div class="lg"><i style="background:var(--amber-line)"></i>媒体 · 2026 署名报道</div>
-      <div class="lg"><i style="background:var(--blue-line)"></i>单源 / 推断 · 待验证</div>
-      <div class="lg"><i style="background:var(--red-line)"></i>存疑 / 未查到 · 不采信</div>
-      <div class="lg"><i style="background:#b9c0c8"></i>访问受限 · 页面打不开</div>
-    </div>
-    <div class="meta">8 份文档 · 148 个来源链接<br>单页离线 · 无外部请求<br>键盘：<b>/</b> 检索 · <b>Esc</b> 关闭</div>
-  </aside>
-  <main class="main">
+<aside class="sidebar" id="sidebar" aria-label="内容导航">
+  <div class="side-head"><span>内容导航</span><button class="side-close" id="sideClose" type="button" aria-label="关闭目录">✕</button></div>
+  <nav class="side-nav" aria-label="文档导航">
+    <a class="nav-doc" href="../index.html">⌂ 首页 · 仪表盘<small>全局检索 · 速查 KPI</small></a>
+    <p class="side-label">开始</p>
+    <a class="nav-doc" href="p00.html">一页速查<small>结论 · 时间轴 · 已确认/未确认</small></a>
+    <p class="side-label">核心事实</p>
+    <a class="nav-doc" href="p10.html">总纲 · 已核验事实<small>此刻行动 · 国补原文 · 监管 · 证据污染</small></a>
+    <p class="side-label">中国大陆</p>
+    <a class="nav-doc active" href="p20.html" aria-current="page">大陆详版<small>玩法 · 品类型号 · 线下 · 证据缺口</small></a>
+    <a class="nav-doc" href="p21.html">汽车·出行·线下·防坑<small>国补边界 · 汽车细则 · 工具箱</small></a>
+    <p class="side-label">跨境电商</p>
+    <a class="nav-doc" href="p30.html">跨境速读 · 一手核验<small>AliExpress 官方通稿 · 实操九条</small></a>
+    <a class="nav-doc" href="p31.html">跨境详版<small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></a>
+    <p class="side-label">区域市场</p>
+    <a class="nav-doc" href="p40.html">区域速读<small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></a>
+    <a class="nav-doc" href="p41.html">区域详版<small>站内官方日历 · 完整核验记录</small></a>
+  </nav>
+  <div class="side-section" id="sideToc" hidden>
+    <p class="side-label">本页目录</p>
+    <div class="side-toc" id="sideTocList"></div>
+  </div>
+  <div class="legend">
+    <b>证据等级图例</b>
+    <div class="lg"><i style="background:var(--brand)"></i>一手 · 政府/平台官网原文</div>
+    <div class="lg"><i style="background:var(--amber-line)"></i>媒体 · 2026 署名报道</div>
+    <div class="lg"><i style="background:var(--blue-line)"></i>单源 / 推断 · 待验证</div>
+    <div class="lg"><i style="background:var(--red-line)"></i>存疑 / 未查到 · 不采信</div>
+    <div class="lg"><i style="background:#b9c0c8"></i>访问受限 · 页面打不开</div>
+  </div>
+  <div class="meta">8 份文档 · 148 个来源链接<br>单页离线 · 无外部请求<br>键盘：<b>/</b> 检索 · <b>Esc</b> 关闭</div>
+</aside>
+  <main class="main" id="main" tabindex="-1">
     <div class="crumb"><a href="../index.html">首页</a> / 中国大陆 / <b>大陆详版</b></div>
+    <h1 class="sr-only">大陆详版</h1>
     
 <section class="doc" id="p20">
   <div class="doc-head" data-toggle="p20">
@@ -366,163 +393,11 @@
 </ol></div>
 </section><div class="pager"><a href="p10.html">← 总纲 · 已核验事实</a><a class="mid" href="../index.html">⌂ 目录</a><a href="p21.html">汽车·出行·线下·防坑 →</a></div>
   </main>
+<footer class="site-foot">
+  <p><b>2026 全球双十一完全指南</b> · 核验版 · 编制 2026-11-10</p>
+  <p class="foot-links"><span>8 份文档 · 148 个可核验来源 · 单页离线可用</span><span aria-hidden="true">·</span><a href="../index.html">回到首页</a><span aria-hidden="true">·</span><span>按 <kbd>/</kbd> 检索</span></p>
+</footer>
 </div>
 <button class="toTop" id="toTop" aria-label="回到顶部">↑</button>
-<script src="../site.js?v=7"></script>
-<script id="searchData" type="application/json">[{"p":"p20.html","a":"p20","t":"大陆详版","x":"核验时点：2026-11-10 23:37–23:55（UTC+8）。系统 date 实测 2026-11-10 为周二 Tuesday，11-11 为周三 Wednesday；黑五 2026-11-27 周五、网一 11-30 周一。任务书写「周三深夜」应为笔误，本文件按真实周二深夜处理——这直接"},{"p":"p20.html","a":"p20","t":"大陆详版","x":"可信等级标注 - 一手 官方原文 / 平台招商规则经两家独立渠道一致转述 / 权威媒体署名报道（已打开正文核验） - 媒体 单一媒体报道或转载，方向可信但细节待验证 - 单源 口令型导购软文 / 自媒体 / AI 生成内容农场，仅作线索，不得当事实 - 存疑 未查到 2026 年官方信息"},{"p":"p20.html","a":"p20","t":"大陆详版","x":"一、平台玩法细节（今年最大变化，已交叉核实）"},{"p":"p20.html","a":"p20-h-一平台玩法细节今年最大变化已交叉核实","t":"大陆详版","x":"1.1 「跨店满减退场、官方立减上位」——多家独立 2026 报道一致"},{"p":"p20.html","a":"p20-h-11跨店满减退场官方立减上位多家独立2026报道","t":"大陆详版","x":"一手天猫官方立减规则（最可靠的一条平台一手规则转述）：活动玩法为官方立减，「消费者无需凑单、购买单件商品即可享受，直接减免部分交易金额，减免金额由商家承担让利」；按店铺维度生效（店内参与类目全部商品生效）；不同类目最低让利比例为 1%／5%／15% 不等；可与其他单品优惠（前 N、定向优惠）、店铺优"},{"p":"p20.html","a":"p20-h-11跨店满减退场官方立减上位多家独立2026报道","t":"大陆详版","x":"一手规则方向的三方一致：「天猫取消跨店满减、京东取消定金预售、抖音采用官方立减 15%，促销从跨店凑单转向直接减价」。 — 同花顺财经《双11大变天：有人掉队就有人超车：跨店满减退场》，2026-10-14 13:54:54，转述搜狐新闻：news.10jqka.com.cn/c680677323."},{"p":"p20.html","a":"p20-h-11跨店满减退场官方立减上位多家独立2026报道","t":"大陆详版","x":"一手更细的量化转述：天猫取消跨店满减与凑单门槛，覆盖约 7000 万款商品推行单品官方直降；京东放弃定金预售、全场现货直发并配套 30 天自动价保；抖音以「立减折扣 + 平台消费券」主打现货直接买；拼多多延续百亿补贴直降，全品类大额满减券由平台全额承担。 — 同花顺《2026双十一：规则做减法，AI"},{"p":"p20.html","a":"p20-h-11跨店满减退场官方立减上位多家独立2026报道","t":"大陆详版","x":"一手口径变化的定性描述：「今年各平台宣传口径中『全网最低价』『GMV 冲刺』等字眼明显淡出，AI、服务与经营确定性被推至高光位置」；多位电商行业人士称「本质是存量竞争」，双 11 从价格战转向差异化赋能之战。10/15 天猫双 11 启动会主题为「AI 进化 旗舰生长」，天猫总裁家洛发言。 — 新浪"},{"p":"p20.html","a":"p20-h-11跨店满减退场官方立减上位多家独立2026报道","t":"大陆详版","x":"实操含义：今年不需要为凑满减而加购，所以「凑单—退款」这套老攻略失效；比价应直接看单品到手价。跨店满减取消后，品类券、店铺券、平台加补券成为主要可叠加层（见 1.3）。「30 天自动价保」目前只有媒体级媒体证据，未找到京东平台公告，申请价保时不要默认它存在，须在订单页确认。"},{"p":"p20.html","a":"p20-h-11跨店满减退场官方立减上位多家独立2026报道","t":"大陆详版","x":"1.2 各平台节奏与差异化（与 00-总纲时间线互补，此处只列与下单有关的）"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"官方立减（1%/5%/15% 类目档）、预售 + 现货双阶段、价保 + 48h 发货"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"一手亿邦 2026-09-25（上引）；中服网 2026-09-21（下引）"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"全现货无预售、取消定金、30 天自动价保（待验证）"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"一手新浪 2026-10-16 /媒体同花顺 2026-11-05"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"「双 11 好物节」10/15 同日启动；立减折扣 + 平台消费券；货架场（商城/搜索/店铺）与内容场联动"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"百亿补贴直降、平台全额承担全品类大额满减券、AI 应用最克制（仅 AI 搜索/虚拟试衣间）"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"媒体同花顺 2026-11-05"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"唯品会、苏宁易购、快手"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"存疑未查到 2026 年官方招商规则或官方活动时间表，检索到的均为 2023–2025 旧文或单源导购软文"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"媒体开局战报（仅作热度参考，非价格依据）：天猫开卖 4 小时数据见于同花顺 2026-11-05 报道（原文数字在本代理抓取中被截断，不引用具体数值）；京东服务订单同比增长 335%，平台延续不披露 GMV 口径；抖音双 11 首日战报「商品卡成交额破百万商家数同比 +103%、搜索带动成交额破百万"},{"p":"p20.html","a":"p20-h-12各平台节奏与差异化与00总纲时间线互补此处只","t":"大陆详版","x":"1.3 88VIP / PLUS / 红包 / 加补券（大部分为媒体或单源，请谨慎）"},{"p":"p20.html","a":"p20-h-1388VIPPLUS红包加补券大部分为媒体或单","t":"大陆详版","x":"媒体11/10 晚 8 点「巅峰场」单源报道：称「巅峰价叠加 88VIP 膨胀消费券和平台加补券后，部分商品综合优惠低至 6.8 折」；88VIP 可先领 8.5 折消费券包（按购物车金额分档膨胀）；「平台加补券至高 6793 元加补券包」覆盖美妆、服饰、3C 数码、母婴、运动户外；「百补巅峰金刚券"},{"p":"p20.html","a":"p20-h-1388VIPPLUS红包加补券大部分为媒体或单","t":"大陆详版","x":"存疑88VIP 会员券的具体档位、PLUS 会员券的具体面额、超级红包单日上限、红包与国补的官方叠加顺序：均未查到 2026 年平台官方公告。检索到的「每晚 8 点红包加码」「每日可领三次」等说法全部出自单源口令软文（见第六节污染说明），不可采信。"},{"p":"p20.html","a":"p20-h-1388VIPPLUS红包加补券大部分为媒体或单","t":"大陆详版","x":"单源明确不可信的口令：「京东搜福利500/福利600/福利900/红包800/苹果222/小米005/国补005/换新006」「淘宝搜天降红包33555/红包到手11666/每日有福利」等，见第六节。"},{"p":"p20.html","a":"p20-h-1388VIPPLUS红包加补券大部分为媒体或单","t":"大陆详版","x":"1.4 今年新增：AI Token 首次成为独立大促品类建议"},{"p":"p20.html","a":"p20-h-14今年新增AIToken首次成为独立大促品类建","t":"大陆详版","x":"一手天猫双 11 首次增设 AI 服务品类：阿里云百炼、千问办公、Qoder、智谱、Minimax-W、月之暗面、阶跃星辰已入驻天猫，以优惠价销售 AI Token；淘宝已推出官方「AI Token 充值中心」；天猫总裁刘博（阿里巴巴集团高级副总裁）称双 11 正式开始前预计仍有两家龙头 AI 公司"},{"p":"p20.html","a":"p20-h-14今年新增AIToken首次成为独立大促品类建","t":"大陆详版","x":"媒体补充（同题访谈转载，单源）：Token 组合包按「学习类型 / 家庭类型 / 一人工作室类型」等需求分层销售，目标人群为做市场研究、家庭学习、一人公司/三人团队的个人消费者，可在天猫一站式对比不同大模型方案。— 新浪 k.sina 同题访谈转载（本代理已抓取 200，未逐一比对署名），示例：k."},{"p":"p20.html","a":"p20-h-14今年新增AIToken首次成为独立大促品类建","t":"大陆详版","x":"选品提示：这是今年唯一真正的新增量品类，双 11 是首次出现「Token 优惠价」的节点；但 Token 属虚拟商品，不在 469 号文国补 4 类数码范围内，也无法用家电/数码券。买前确认：有效期与到期作废条款、是否限模型/限调用量、是否可开票、是否支持退款；不要为「囤 Token」预付大额。"},{"p":"p20.html","a":"p20-h-14今年新增AIToken首次成为独立大促品类建","t":"大陆详版","x":"二、品类与具体型号清单（本文件核心）"},{"p":"p20.html","a":"p20-h-二品类与具体型号清单本文件核心","t":"大陆详版","x":"价格锚点说明（必读）：本代理未能从任何平台官方商品页或厂商官网核实到 2026 双 11 的实时价格。下表中出现的机型名称与「元起」数字全部来自单源级口令导购软文（新浪财经滚动页、k.sina 自媒体号）或媒体资讯流标题，只能当作「2026 年在售型号名称」的线索，不能当作已核实价格。已在每行标注等"},{"p":"p20.html","a":"p20-h-二品类与具体型号清单本文件核心","t":"大陆详版","x":"2.1 手机 / 平板 / 笔记本 / 电脑（今年最值得动手）"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"型号线索（等级）"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"为什么 11.11 是买点"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"iPhone 18 Pro / 18 Pro Max、小米 18 Pro 系列、vivo X500 Pro Max、荣耀 700 系列、OPPO Reno17、华为 Mate 系（单源型号名来自软文 + 网易资讯流 2026-11-09/11-10 标题；型号名未经厂商官网核实）"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"双 11 是新品首发后第一次规模化让利；今年「3C 数码涨价的双 11」为网易资讯流 2026-11-10 22:42 虎嗅标题媒体，暗示新机价格坚挺、老款更值得看"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":">6000 元机型不吃国补；只有 ≤6000 元才有 15%（≤500 元）。新旗舰多数超线，别把国补算进预算"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"手机·上一代旗舰 / 中端"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"iPhone 17、小米 17 Pro Max / 17 Ultra、Redmi K90 / K100 Pro / Turbo5 / Note17、小米 Civi5 Pro / 17T、MIX Flip2（单源软文型号名 + 「iPhone 17 直降 1000 元」「K90 3099 元起」等数字"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"今年最优解：上一代旗舰降价后落入 ≤6000 元区间，能吃满 15% 国补 + 官方立减 + 品类券三层；且 2026 前 8 月通讯器材类零售额同比 +16.3%（国家统计局，经同花顺 2026-10-14 转述）一手，说明该品类是今年热度与供给最集中的赛道"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"每人每类限 1 件、需实名发票、申领人/付款人/收货人一致；下单前确认商品页带「国补」标识"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"iPad Air 11/13 英寸、小米平板、华为平板（单源型号名）"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"平板属 469 号文 4 类数码之一，≤6000 元可补 15%"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"「立减 500 元」「以旧换新最高 500」等数字来自单源软文，不可采信；注意蜂窝版常超线或不参加"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"笔记本 / 台式机"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"QAIPC 千问办公 AI 电脑（联想昭阳 / Lecoo、ASUS、MSI、雷神 + Intel/AMD，超 70 款）一手；传统轻薄本/游戏本型号名存疑"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"电脑属 6 类家电国补（1 级能效，≤1500 元/件），叠加今年首次出现的 AI PC 新品集中投放"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"需1 级能效标识；注意「电脑」按家电类补（上限 1500）还是按数码类补（上限 500）以平台国补专区分类为准"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"智能眼镜（2026 唯一新增品类）"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"具体品牌型号存疑未查到 2026 官方清单"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"469 号文首次把智能眼镜与手机/平板/智能手表并列，≤6000 元、15%、上限 500 元；1999 元眼镜约补 300 元（主代理核验示例）"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"必须是「智能眼镜」而非普通近视镜/太阳镜；确认在国补专区且有标识；验光配镜、度数定制、售后与退货是否消耗国补资格需问清"},{"p":"p20.html","a":"p20-h-21手机平板笔记本电脑今年最值得动手","t":"大陆详版","x":"2.2 家电（今年最容易踩的误判，务必看）"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"建议2026 年家电国补从 12 类精简为 6 类：冰箱、洗衣机、电视、空调、热水器、电脑（均须 1 级能效或水效），补贴 = 券后最终价 15%、每件 ≤1500 元、每人每类 1 件。净水器、洗碗机、电饭煲、微波炉、吸油烟机、家用灶具等厨电已退出全国统一补贴；智能家居/适老化家居改由地方自主制定"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"解读披露 2025 年家电+数码补贴产品销量超 2.2 亿件、销售额 7000 多亿元、惠及超 1.6 亿人次一手。"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"11.11 买点"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"空调 / 冰箱 / 洗衣机 / 热水器 / 电视"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"✅ 6 类主力，1 级能效，≤1500 元/件"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"官方立减 + 品类券 + 国补三层可叠；冬季是空调安装淡季、排期通常更快；电视面板类在大促价格弹性最大"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"存疑未查到 2026 官方型号/价格清单；软文型号名不采信"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"洗烘一体 / 干衣机"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"⚠️ 若归入「洗衣机」且 1 级水效可能可补，须以平台国补专区分类为准"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"大件配送安装周期长，宜在大促前段下单"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"洗碗机 / 扫地机器人 / 净水器 / 厨电（油烟机、灶具、微波炉、电饭煲）"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"❌ 今年吃不到全国统一 15% 国补（除非地方另有自主补贴，须查当地商务局公告）"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"只能靠平台官方立减 + 品类券 + 店铺券。11.11 仍是全年渠道让利最集中的节点之一，但别按「再减 15%」估预算"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"存疑具体型号/价格未查到 2026 官方信息"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"⚠️ 智能家居、适老化家居、部分厨电可能由地方自定"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"必须以当地商务局 / 云闪付 / 平台「国补专区」实时页面为准，资金先到先得"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"存疑本代理未查到 2026 年任何地方额外消费券或额度耗尽的官方公告"},{"p":"p20.html","a":"p20-h-22家电今年最容易踩的误判务必看","t":"大陆详版","x":"2.3 其余品类（逐条标注证据状态，避免用往年填充）"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"存疑未查到 2026 年官方活动与型号价格信息"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"相机不在 6 类家电 / 4 类数码国补内；更该看品牌官方渠道与黑五海外价（见 2.5）"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"耳机 / 智能手表（手环）"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"智能手表（手环）✅ 属 4 类数码（≤6000、15%、≤500）；耳机不在国补目录。单源软文称「AirPods 可享 8 地区 15% 国补」——与 469 号文全国统一目录不符，疑为地方自主补贴或软文误写，不可采信（来源：finance.sina.com.cn/doc-inivwitm57400"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"手表认准国补专区标识；耳机只比平台券"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"美妆 / 母婴 / 宠物 / 运动户外 / 家居"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"存疑未查到 2026 年官方活动力度与具体商品。仅媒体级单源提及「平台加补券覆盖美妆、服饰、3C 数码、母婴、运动户外」（k.sina 88VIP 文，上引）"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"这些品类只吃平台券/店铺券，无国补；美妆/母婴建议比价黑五跨境与年货节囤货装"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"更该等年货节（约 2027 年 1 月）：礼盒、白酒、坚果炒货、生鲜年货在年货节供给与赠品更强；11.11 只适合保质期长的日常消耗品补货"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"双 11 常见「工费减免/克减」但金价随行就市，平台券难改基础价；生肖/贺岁款更该等年货节。注意高金价环境下回购与工费条款"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"汽车 / 电动车"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"详见 01-补充（主代理已处理）。仅记一条品类热度背景：2026 前 8 月汽车类零售额同比 -13.9%（国家统计局，经同花顺 2026-10-14 转述）一手"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"不在 469 号文全国统一 6+4 类内"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"旅游 / 酒店 / 机票 / 演出票"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"存疑未查到 2026 年双 11 官方活动信息；检索命中的是 2025-10-20 同花顺、2024 中华网等旧文"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"国际机票/海外酒店更该等黑五（11/27）/网一（11/30）；国内机酒年货节/春节前另有节奏"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"虚拟商品 / 会员订阅"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"✅ AI Token 是今年唯一可核实的新品类一手，见 1.4；其余（视频会员、云盘、游戏）存疑"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"海外软件/游戏/Steam 订阅更该等黑五网一"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"AI 硬件 / QAIPC"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"✅一手超 1000 款新品、超 70 款 QAIPC，品牌见 2.1"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"今年最值得「尝鲜型」下单的方向，但注意首批机型溢价与售后"},{"p":"p20.html","a":"p20-h-23其余品类逐条标注证据状态避免用往年填充","t":"大陆详版","x":"2.4 政策性买点判断（不含任何价格数字，可放心使用）"},{"p":"p20.html","a":"p20-h-24政策性买点判断不含任何价格数字可放心使用","t":"大陆详版","x":"现在（11.11）该买：6 类 1 级能效家电、≤6000 元手机/平板/智能手表/智能眼镜、AI Token 与 QAIPC 新品、上一代旗舰。理由：国补按券后最终价 15%，平台券/红包先减会让国补金额变小但总价更低，所以「先用券再走国补」仍是最优；且地方额度先到先得、越往后越可能耗尽。"},{"p":"p20.html","a":"p20-h-24政策性买点判断不含任何价格数字可放心使用","t":"大陆详版","x":"更该等黑五 / 网一（2026-11-27 / 11-30）：海淘跨境进口、海外品牌官网直邮、境外软件与订阅、国际机票/海外酒店、相机与海外版电子产品。理由：这些品类不在中国国补目录内，双 11 对它们没有政策性优势；黑五网一是海外渠道的主场。（日期已用 date 与父代理核验一致）"},{"p":"p20.html","a":"p20-h-24政策性买点判断不含任何价格数字可放心使用","t":"大陆详版","x":"更该等年货节：食品礼盒/白酒/坚果/生鲜、黄金珠宝贺岁款、母婴纸尿裤囤货装、家居软装节庆款。理由：这些品类双 11 无国补、且年货节在赠品与礼盒规格上更匹配春节需求。"},{"p":"p20.html","a":"p20-h-24政策性买点判断不含任何价格数字可放心使用","t":"大陆详版","x":"三、线下（本板块最大的证据空白，请如实写进指南）"},{"p":"p20.html","a":"p20-h-三线下本板块最大的证据空白请如实写进指南","t":"大陆详版","x":"存疑未查到 2026 年官方信息：本代理针对银泰/百货、盒马、山姆/Costco/开市客、苏宁/国美门店、Apple 授权店、海南离岛免税/中免、购物中心与快闪、餐饮/电影/本地生活（美团/大众点评/抖音团购）分别检索，命中的全部是 2023–2025 年旧文、同城资讯或单源口令导购软文，没有任何一"},{"p":"p20.html","a":"p20-h-三线下本板块最大的证据空白请如实写进指南","t":"大陆详版","x":"例：海南方向仅命中人民网海南频道 2026-07-10 文章（hi.people.com.cn/c231190-41635746.html ，本代理未打开，不声称已核实），且并非 11.11 活动；本地生活方向命中 2016 年新浪信用卡活动与 2023/2024 网易旧文；线下百货方向命中 202"},{"p":"p20.html","a":"p20-h-三线下本板块最大的证据空白请如实写进指南","t":"大陆详版","x":"禁止用 2025 年及以前的「双 11 线下狂欢」「80 万门店参与」等旧规则填充 2026 年内容。"},{"p":"p20.html","a":"p20-h-三线下本板块最大的证据空白请如实写进指南","t":"大陆详版","x":"一手唯一可写的线下结论：政策明确倾斜线下与县域（不是活动信息，是政策方向）。469 号文（商办流通函2025年第469号，2025-12-31，本代理已实测 URL 200 且正文完整）设「二、支持实体零售发展」，鼓励线下门店打造多元化消费场景、深挖品牌专卖店、专业店等实体零售潜力；设「三、保障农村"},{"p":"p20.html","a":"p20-h-三线下本板块最大的证据空白请如实写进指南","t":"大陆详版","x":"给读者的可执行替代方案（不假装有活动清单）： 1. 国补线上线下同标准，线下门店同样可执行 15%：直接问门店「是否在本地国补定点名单内、能否开具列明初始价/补贴额/实付额的实名发票」。 2. 线下门店现场可核对 469 号文要求的四项价格公示（初始销售价 / 商家优惠让利 / 补贴金额 / 最终销"},{"p":"p20.html","a":"p20-h-三线下本板块最大的证据空白请如实写进指南","t":"大陆详版","x":"四、此刻（2026-11-10 23:34，周二深夜）立刻能做的事"},{"p":"p20.html","a":"p20-h-四此刻202611102334周二深夜立刻能做的","t":"大陆详版","x":"先纠正一个关键时点：现在是周二 23:34，距 11/11 0:00 约 26 分钟；「11/10 20:00 峰值场」已过去约 3.5 小时。以下按证据等级排优先级。"},{"p":"p20.html","a":"p20-h-四此刻202611102334周二深夜立刻能做的","t":"大陆详版","x":"建议 1. 预售尾款早已截止，不用赶：天猫预售尾款窗口为 2026-10-20 20:00 – 10-25 23:59:59，定金窗口 10/15 20:00 – 10/20 17:59:59。今晚不存在「尾款截止」这回事；若看到「今晚 0 点不付尾款定金作废」的文案，是单源软文或诈骗。 — 中服网"},{"p":"p20.html","a":"p20-h-四此刻202611102334周二深夜立刻能做的","t":"大陆详版","x":"建议 6. 若 11/10 20:00 的巅峰券/加补券没领到，媒体单源称「部分加补券每天早 10 点、晚 8 点补货」、「88VIP 8.5 折消费券包」可在今晚/明早补领——先在淘宝/京东 App 内确认券是否真实存在、面额与门槛，不要照抄自媒体数字。来源：k.sina.com.cn/artic"},{"p":"p20.html","a":"p20-h-四此刻202611102334周二深夜立刻能做的","t":"大陆详版","x":"建议 8. 不要搜任何「红包口令」（「福利500」「红包800」「苹果222」「天降红包33555」「国补160」等），这些是返利引流话术；不要相信「第四批国补 625 亿 / 690 亿」「额度 10 月全额下达」——同一批 SEO 模板在多个地方新闻站投放且金额互相矛盾，不是官方公告（污染清单见"},{"p":"p20.html","a":"p20-h-四此刻202611102334周二深夜立刻能做的","t":"大陆详版","x":"五、与本板块相关的时间线要点（补充 00-总纲，不重复）"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"一手天猫/淘宝招商规则逐段时刻（中服网转淘天速递 9/21 消息，2026-09-21，news.efu.com.cn/newsview-1358753-1.htm… ；亿邦动力独立转述 2026-09-25，www.163.com/L7MIUUMI05118A6A.html ，两处一致）："},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"预售：预热 10/15 00:00–19:59:59；定金 10/15 20:00–10/20 17:59:59；尾款 10/20 20:00–10/25 23:59:59"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"现货：预热 10/17 00:00–10/20 19:59:59；现货售卖 10/20 20:00–11/13 23:59:59"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"淘宝双 11 同玩法（官方立减），现货同为 10/20 20:00–11/13 23:59:59"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"亿邦另注：「和去年双 11 相比，预热开启时间均为 10 月 15 日」——即 2025 与 2026 的预售预热起点相同，今年的变化不在起点而在玩法（取消跨店满减）与超长现货期。"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"一手今年确为「超长周期」：京东 10/12 晚 8 点现货抢跑、天猫 10/15 预售、10/20 现货开卖至 11/13 收官，全程约 1 个月，11/11 当天已不是唯一峰值。— 新浪财经 2026-10-16（上引）+ 中服网 2026-09-21（上引）"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"建议开局与收官日期存在口径冲突，不要挑一个当官方结论：主代理已实测「京东 10/12 晚 8 点 / 10/9 晚 8 点」「淘宝 10/15 10 点 / 10/15 早 8 点 / 10/15 晚 8 点」「收官 11/11 24:00 / 11/13 23:59 / 11/14 24:00」多"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"存疑11/10 20:00 与 11/11 0:00 两个峰值点：未查到任何平台官方公告明确定义这两个时刻为「峰值/开抢点」，仅媒体单源级文章反复使用。指南中应表述为「媒体与导购内容普遍强调的时段，非平台官方定义」。"},{"p":"p20.html","a":"p20-h-五与本板块相关的时间线要点补充00总纲不重复","t":"大陆详版","x":"六、证据缺口与风险提示（本板块）"},{"p":"p20.html","a":"p20-h-六证据缺口与风险提示本板块","t":"大陆详版","x":"价格与型号是本板块最大空白：本代理未能核实任何 2026 双 11 具体商品的实时价格或历史价格锚点。所有「元起」「直降 X 元」「最高省 X 元」数字均来自单源口令导购软文（本代理实读样本：finance.sina.com.cn/doc-inivpfyr8216535.sh… 、finance.s"},{"p":"p20.html","a":"p20-h-六证据缺口与风险提示本板块","t":"大陆详版","x":"SEO 批量注入污染（与主代理结论一致）：本代理独立观察到地方新闻站（大众网 dzwww.com.cn 及地市子站、中华新闻 henan.china.com、腾讯新闻 news.qq.com、今日头条号、网易号、博客园、以及新浪财经滚动页/k.sina 自媒体号）在 2026-10-01～10-24"},{"p":"p20.html","a":"p20-h-六证据缺口与风险提示本板块","t":"大陆详版","x":"搜索引擎层面：Bing 中文对「2026双十一」返回完全无关的 WSJ 美联储新闻（本代理实测）；Google 在本机被个性化为美国/东南亚结果，site:reuters.com 2026 Singles Day 返回 0 条 Reuters 结果，Singles Day 2026 大量命中美国 U"},{"p":"p20.html","a":"p20-h-六证据缺口与风险提示本板块","t":"大陆详版","x":"平台一手公告缺口：除天猫/淘宝招商规则（经中服网、亿邦动力两家转述）外，京东、抖音、拼多多、唯品会、苏宁、快手的 2026 官方活动公告均未查到；「京东 30 天自动价保」「88VIP 8.5 折券包」「平台加补券 6793 元」「抖音立减 15%」均无平台公告原件，仅媒体/自媒体转述。"},{"p":"p20.html","a":"p20-h-六证据缺口与风险提示本板块","t":"大陆详版","x":"时间表述风险：任务书称「周三深夜」，实际系统时间与日历均为2026-11-10 周二；若指南沿用「周三」，会把「11/11 0 点」与「11/10 20:00 峰值」的相对位置写错。建议统一写「11 月 10 日（周二）深夜」。"},{"p":"p20.html","a":"p20-h-六证据缺口与风险提示本板块","t":"大陆详版","x":"政策适用边界：469 号文是 2025-12-31 发布、2026-01-01 起施行的年度政策，不是「双 11 专属」；「第四批资金/额度」由各地自行组织公示，是否耗尽、能否与平台券叠加、地方是否另有消费券，本代理未查到 2026 年官方实时数据，必须以当地商务局/云闪付/平台国补专区实时页面为准"},{"p":"p20.html","a":"p20-h-六证据缺口与风险提示本板块","t":"大陆详版","x":"会改变结论的新信息：① 平台官方活动页/App 内规则页（能定死起止时刻、券档、价保天数）；② 厂商官网 2026 双 11 价格页（能补齐型号与价格锚点）；③ 各地商务局国补额度公告（能定死额度与叠加规则）；④ 银泰/盒马/山姆/中免/美团等品牌 2026 官方活动公告（能补齐线下空白）；⑤ Re"}]</script>
-
-<script>
-(function(){
-  var D=window.D11; if(!D)return;
-  var q=D.$('#q'), res=D.$('#results'), cnt=D.$('#searchcount');
-  if(!q||!res)return;
-  var IDX=[];
-  if(window.D11_IDX&&window.D11_IDX.length){IDX=window.D11_IDX}
-  else{var sd=D.$('#searchData'); if(sd){try{IDX=JSON.parse(sd.textContent)}catch(e){}}}
-  var loading=false, pending=null;
-  function ensureIndex(cb){
-    if(IDX.length){cb();return}
-    if(!loading){
-      loading=true;
-      var sc=document.createElement('script');
-      sc.src=(location.pathname.indexOf('/pages/')>=0?'../':'')+'search-index.js?v='+window.D11_VER;
-      sc.onload=function(){IDX=window.D11_IDX||[];loading=false;var p=pending;pending=null;if(p)p()};
-      sc.onerror=function(){loading=false;var p=pending;pending=null;if(p)p()};
-      document.head.appendChild(sc);
-    }
-    pending=cb;
-  }
-  var timer=null, marks=[];
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function hi(text,terms){var out=esc(text);terms.forEach(function(t){if(!t)return;
-    out=out.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<b>$1</b>')});return out}
-  function clearMarks(){
-    marks.forEach(function(m){var p=m.parentNode;if(p){p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()}});
-    marks=[]; D.$$('.doc.flash').forEach(function(d){d.classList.remove('flash')});
-  }
-  /* 在指定根节点内把命中词包成 <mark> */
-  function highlightIn(root,terms){
-    if(!terms||!terms.length||!root) return 0;
-    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false),nodes=[];
-    while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE|MARK)$/.test(n.parentNode.nodeName))nodes.push(n)}
-    var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
-    nodes.forEach(function(n){var v=n.nodeValue;if(!v)return;re.lastIndex=0;if(!re.test(v))return;re.lastIndex=0;
-      var fr=document.createDocumentFragment(),last=0,m;
-      while((m=re.exec(v))!==null){
-        fr.appendChild(document.createTextNode(v.slice(last,m.index)));
-        var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);
-        last=m.index+m[0].length;
-      }
-      if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
-      n.parentNode.replaceChild(fr,n);
-    });
-    return marks.length;
-  }
-  function jump(href,anchor,terms){
-    if(href && href.indexOf('.html')>=0){
-      var cur=location.pathname.split('/').pop();
-      var tgt=href.split('#')[0];
-      if(tgt===cur){
-        /* 同一页：就地高亮 + 滚动，不重新导航 */
-        clearMarks();
-        var same=document.getElementById(anchor);
-        var scope=(same&&same.closest('.doc'))||document.querySelector('.doc')||document.body;
-        highlightIn(scope,terms);
-        if(same) same.scrollIntoView({behavior:'smooth',block:'start'});
-        var dd=(scope.classList&&scope.classList.contains('doc'))?scope:null;
-        if(dd){dd.classList.add('flash');setTimeout(function(){dd.classList.remove('flash')},1600)}
-        res.classList.remove('on'); D.closeMenu();
-        return;
-      }
-      var url=tgt+(anchor?'#'+anchor:'');
-      try{D.store('d11_jump_terms',JSON.stringify(terms||[]))}catch(e){}
-      location.href=url; return;
-    }
-    var d=document.getElementById(href.replace('#','')); if(!d)return;
-    d.classList.remove('collapsed');
-    var target=(anchor&&document.getElementById(anchor))||d;
-    clearMarks();
-    if(terms&&terms.length){
-      var body=d.querySelector('.doc-body')||document.body;
-      var w=document.createTreeWalker(body,NodeFilter.SHOW_TEXT,null,false),nodes=[];
-      while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE)$/.test(n.parentNode.nodeName))nodes.push(n)}
-      var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
-      nodes.forEach(function(n){var v=n.nodeValue;if(!re.test(v))return;re.lastIndex=0;
-        var fr=document.createDocumentFragment(),last=0,m;
-        while((m=re.exec(v))!==null){fr.appendChild(document.createTextNode(v.slice(last,m.index)));
-          var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);last=m.index+m[0].length}
-        if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
-        if(marks.length<400)n.parentNode.replaceChild(fr,n)});
-    }
-    target.scrollIntoView({behavior:'smooth',block:'start'});
-    d.classList.add('flash');setTimeout(function(){d.classList.remove('flash')},1600);
-    res.classList.remove('on'); D.closeMenu();
-  }
-  function render(){
-    var v=q.value.trim();
-    if(!v){res.classList.remove('on');cnt.textContent='';clearMarks();return}
-    if(!IDX.length){cnt.textContent='加载索引…';ensureIndex(function(){render()});return}
-    var terms=v.toLowerCase().split(/\s+/).filter(Boolean);
-    var hits=IDX.filter(function(it){return terms.every(function(t){return it.x.toLowerCase().indexOf(t)>=0})});
-    cnt.textContent=hits.length?hits.length+' 条命中':'无结果';
-    var out='<div class="res-h">'+hits.length+' 条命中 · 前 40 条 · 回车跳到第一条</div>';
-    if(!hits.length)out+='<div class="res-empty">没有匹配内容。试试「国补」「15%」「AliExpress」「黑五」「价保」。</div>';
-    hits.slice(0,40).forEach(function(it,i){
-      out+='<a class="res-i" tabindex="0" data-i="'+i+'" data-p="'+esc(it.p||'')+'" data-a="'+esc(it.a||'')+'">'
-        +'<span class="rt">'+esc(it.t)+'</span><span class="rq">'+hi(it.x,terms)+'</span></a>';
-    });
-    res.innerHTML=out;res._hits=hits;res._terms=terms;res.classList.add('on');
-    D.$$('.res-i',res).forEach(function(el){
-      function go(){var h=res._hits[+el.dataset.i];jump(el.dataset.p||('#'+h.d),el.dataset.a,res._terms)}
-      el.addEventListener('click',go);el.addEventListener('keydown',function(e){if(e.key==='Enter')go()});
-    });
-  }
-  q.addEventListener('focus',function(){ensureIndex(function(){})});
-  q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(render,140)});
-  q.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){q.value='';res.classList.remove('on');cnt.textContent='';clearMarks();q.blur()}
-    if(e.key==='Enter'&&res.classList.contains('on')){var f=res.querySelector('.res-i');if(f)f.click()}
-  });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();q.select()}
-  });
-  document.addEventListener('click',function(e){if(!e.target.closest('.searchbox'))res.classList.remove('on')});
-  /* 站内锚点：展开被折叠的文档 */
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a.internal, a[href^="#doc-"], a[href^="#p"]');if(!a)return;
-    var d=document.getElementById(a.getAttribute('href').slice(1));
-    if(d&&d.classList.contains('doc'))d.classList.remove('collapsed');
-  });
-  /* 跨页跳转后：展开文档、滚到锚点、按存下的词高亮 */
-  try{
-    var savedTerms=[];
-    try{savedTerms=JSON.parse(D.load('d11_jump_terms','[]'))||[]}catch(e){}
-    D.store('d11_jump_terms','[]');
-    if(location.hash){
-      var aid;
-      try{aid=decodeURIComponent(location.hash.slice(1))}catch(e){aid=location.hash.slice(1)}
-      var d=document.getElementById(aid)||document.getElementById(aid.replace(/-h-.*$/,''));
-      if(d&&d.classList&&d.classList.contains('doc'))d.classList.remove('collapsed');
-      var go=function(){
-        var t=document.getElementById(aid);
-        if(t){t.scrollIntoView({block:'start'});}
-        else if(d){d.scrollIntoView({block:'start'})}
-      };
-      /* 等布局稳定后再滚，避免图片/表格回流导致位置偏移 */
-      requestAnimationFrame(function(){setTimeout(go,60)});
-      if(savedTerms.length){
-        setTimeout(function(){
-          clearMarks();
-          var scope=(document.getElementById(aid)||{}).closest?
-            (document.getElementById(aid)||{}).closest('.doc'):null;
-          scope=scope||document.querySelector('.doc');
-          highlightIn(scope||document.body,savedTerms);
-        },220);
-      }
-      window.addEventListener('load',function(){setTimeout(go,80)});
-    }
-  }catch(e){}
-})();
-</script>
 
 </body></html>

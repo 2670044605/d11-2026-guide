@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>汽车·出行·线下·防坑 · 2026 双十一指南</title>
-<link rel="stylesheet" href="../site.css?v=7">
+<link rel="stylesheet" href="../site.css?v=12">
+<script>
+(function(){try{var r=document.documentElement;var d=localStorage.getItem('d11_theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');r.dataset.theme=d;var n=localStorage.getItem('d11_density');if(n)r.dataset.density=n;var f=localStorage.getItem('d11_font');if(f)r.dataset.fontscale=f}catch(e){}})();
+</script>
+<script src="../site.js?v=12" defer></script>
+<script src="../search.js?v=12" defer></script>
 <meta name="description" content="2026 全球双十一（11.11）值得参加的活动与商品指南：线上线下、中国大陆 + 跨境 + 区域市场，每条关键事实标注来源与可信等级（一手/媒体/单源/存疑），含 148 个可核验来源链接。">
 <meta name="theme-color" content="#0f766e">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -18,53 +23,75 @@
 <meta name="twitter:title" content="汽车·出行·线下·防坑 · 2026 双十一指南">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <header class="topbar">
-  <button class="tb-btn menu-toggle" id="menuBtn" aria-label="目录">☰ 目录</button>
-  <div class="brandmark"><a href="../index.html" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
-    <span class="logo">11</span><span class="bt">双十一完全指南<small>2026 · 核验版</small></span></a></div>
-  <div class="searchbox">
-    <span class="si">⌕</span>
-    <input id="q" type="search" placeholder="全文检索：国补 / AliExpress / 黑五 / 智能眼镜 …" autocomplete="off" aria-label="全文检索">
-    <kbd>/</kbd><div class="results" id="results"></div>
+  <button class="tb-btn icon menu-toggle" id="menuBtn" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="brandmark"><a href="../index.html" aria-label="返回首页">
+    <span class="logo" aria-hidden="true">11</span><span class="bt">双十一完全指南<small>2026 · 核验版</small></span></a></div>
+  <div class="searchbox" id="searchbox">
+    <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></svg></span>
+    <input id="q" type="search" placeholder="搜索全文：国补 / AliExpress / 黑五 / 价保 …" name="q" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="全文检索" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="results">
+    <button class="sclear" id="searchClear" type="button" aria-label="清除搜索" hidden>✕</button>
+    <kbd aria-hidden="true">/</kbd>
+    <div class="results" id="results" role="listbox" aria-label="搜索结果"></div>
   </div>
-  <span class="searchcount" id="searchcount"></span>
+  <span class="searchcount" id="searchcount" role="status" aria-live="polite"></span>
   <div class="tb-actions">
-    <button class="tb-btn opt" id="densityBtn" title="切换信息密度">密度</button>
-    <button class="tb-btn opt" id="fontBtn" title="切换字号">A<sup>±</sup></button>
-    <button class="tb-btn" id="themeBtn" title="深浅色">◐ 深色</button>
-    <button class="tb-btn opt" id="expandBtn" title="展开/折叠全部">全部展开</button>
+    <button class="tb-btn icon" id="themeBtn" type="button" title="切换深浅色" aria-label="切换深浅色" aria-pressed="false">
+      <span class="theme-ico"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></span>
+    </button>
+    <button class="tb-btn icon" id="toolsBtn" type="button" title="阅读设置" aria-label="阅读设置" aria-expanded="false" aria-controls="toolsPop"><span class="aa" aria-hidden="true">Aa</span></button>
+    <button class="tb-btn icon opt" id="expandBtn" type="button" title="全部折叠" aria-label="全部折叠"><span aria-hidden="true">⇕</span></button>
+  </div>
+  <div class="tools-pop" id="toolsPop" hidden>
+    <div class="tp-head"><span>阅读设置</span><button class="tp-close" id="toolsClose" type="button" aria-label="关闭阅读设置">✕</button></div>
+    <div class="tp-group"><span class="tp-label">主题</span><div class="seg" data-pref="theme" role="group" aria-label="主题">
+      <button type="button" data-val="light">浅色</button><button type="button" data-val="dark">深色</button></div></div>
+    <div class="tp-group"><span class="tp-label">密度</span><div class="seg" data-pref="density" role="group" aria-label="信息密度">
+      <button type="button" data-val="compact">紧凑</button><button type="button" data-val="normal">标准</button><button type="button" data-val="relaxed">宽松</button></div></div>
+    <div class="tp-group"><span class="tp-label">字号</span><div class="seg" data-pref="font" role="group" aria-label="字号">
+      <button type="button" data-val="s">小</button><button type="button" data-val="m">中</button><button type="button" data-val="l">大</button></div></div>
+    <button class="tp-action" id="expandBtn2" type="button">全部折叠</button>
   </div>
 </header>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 <div class="scrim" id="scrim"></div>
 <div class="layout">
-<aside class="sidebar" id="sidebar">
-<h4>内容导航</h4>
-<a class="nav-doc" href="../index.html">⌂ 首页 · 仪表盘<small>全局检索 · 速查 KPI</small></a>
-<h4>开始</h4>
-<a class="nav-doc" href="p00.html" data-target="p00">一页速查<small>结论 · 时间轴 · 已确认/未确认</small></a>
-<h4>核心事实</h4>
-<a class="nav-doc" href="p10.html" data-target="p10">总纲 · 已核验事实<small>此刻行动 · 国补原文 · 监管 · 证据污染</small></a>
-<h4>中国大陆</h4>
-<a class="nav-doc" href="p20.html" data-target="p20">大陆详版<small>玩法 · 品类型号 · 线下 · 证据缺口</small></a>
-<a class="nav-doc active" href="p21.html" data-target="p21">汽车·出行·线下·防坑<small>国补边界 · 汽车细则 · 工具箱</small></a>
-<h4>跨境电商</h4>
-<a class="nav-doc" href="p30.html" data-target="p30">跨境速读 · 一手核验<small>AliExpress 官方通稿 · 实操九条</small></a>
-<a class="nav-doc" href="p31.html" data-target="p31">跨境详版<small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></a>
-<h4>区域市场</h4>
-<a class="nav-doc" href="p40.html" data-target="p40">区域速读<small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></a>
-<a class="nav-doc" href="p41.html" data-target="p41">区域详版<small>站内官方日历 · 完整核验记录</small></a>
-<div class="legend">
-      <b>证据等级图例</b>
-      <div class="lg"><i style="background:var(--brand)"></i>一手 · 政府/平台官网原文</div>
-      <div class="lg"><i style="background:var(--amber-line)"></i>媒体 · 2026 署名报道</div>
-      <div class="lg"><i style="background:var(--blue-line)"></i>单源 / 推断 · 待验证</div>
-      <div class="lg"><i style="background:var(--red-line)"></i>存疑 / 未查到 · 不采信</div>
-      <div class="lg"><i style="background:#b9c0c8"></i>访问受限 · 页面打不开</div>
-    </div>
-    <div class="meta">8 份文档 · 148 个来源链接<br>单页离线 · 无外部请求<br>键盘：<b>/</b> 检索 · <b>Esc</b> 关闭</div>
-  </aside>
-  <main class="main">
+<aside class="sidebar" id="sidebar" aria-label="内容导航">
+  <div class="side-head"><span>内容导航</span><button class="side-close" id="sideClose" type="button" aria-label="关闭目录">✕</button></div>
+  <nav class="side-nav" aria-label="文档导航">
+    <a class="nav-doc" href="../index.html">⌂ 首页 · 仪表盘<small>全局检索 · 速查 KPI</small></a>
+    <p class="side-label">开始</p>
+    <a class="nav-doc" href="p00.html">一页速查<small>结论 · 时间轴 · 已确认/未确认</small></a>
+    <p class="side-label">核心事实</p>
+    <a class="nav-doc" href="p10.html">总纲 · 已核验事实<small>此刻行动 · 国补原文 · 监管 · 证据污染</small></a>
+    <p class="side-label">中国大陆</p>
+    <a class="nav-doc" href="p20.html">大陆详版<small>玩法 · 品类型号 · 线下 · 证据缺口</small></a>
+    <a class="nav-doc active" href="p21.html" aria-current="page">汽车·出行·线下·防坑<small>国补边界 · 汽车细则 · 工具箱</small></a>
+    <p class="side-label">跨境电商</p>
+    <a class="nav-doc" href="p30.html">跨境速读 · 一手核验<small>AliExpress 官方通稿 · 实操九条</small></a>
+    <a class="nav-doc" href="p31.html">跨境详版<small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></a>
+    <p class="side-label">区域市场</p>
+    <a class="nav-doc" href="p40.html">区域速读<small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></a>
+    <a class="nav-doc" href="p41.html">区域详版<small>站内官方日历 · 完整核验记录</small></a>
+  </nav>
+  <div class="side-section" id="sideToc" hidden>
+    <p class="side-label">本页目录</p>
+    <div class="side-toc" id="sideTocList"></div>
+  </div>
+  <div class="legend">
+    <b>证据等级图例</b>
+    <div class="lg"><i style="background:var(--brand)"></i>一手 · 政府/平台官网原文</div>
+    <div class="lg"><i style="background:var(--amber-line)"></i>媒体 · 2026 署名报道</div>
+    <div class="lg"><i style="background:var(--blue-line)"></i>单源 / 推断 · 待验证</div>
+    <div class="lg"><i style="background:var(--red-line)"></i>存疑 / 未查到 · 不采信</div>
+    <div class="lg"><i style="background:#b9c0c8"></i>访问受限 · 页面打不开</div>
+  </div>
+  <div class="meta">8 份文档 · 148 个来源链接<br>单页离线 · 无外部请求<br>键盘：<b>/</b> 检索 · <b>Esc</b> 关闭</div>
+</aside>
+  <main class="main" id="main" tabindex="-1">
     <div class="crumb"><a href="../index.html">首页</a> / 中国大陆 / <b>汽车·出行·线下·防坑</b></div>
+    <h1 class="sr-only">汽车·出行·线下·防坑</h1>
     
 <section class="doc" id="p21">
   <div class="doc-head" data-toggle="p21">
@@ -249,163 +276,11 @@
 - 各平台 11/11 当天的<strong>实时价格</strong>：本指南无法代替打开 App 看当前价，价格随库存与券动态变化。</p></div>
 </section><div class="pager"><a href="p20.html">← 大陆详版</a><a class="mid" href="../index.html">⌂ 目录</a><a href="p30.html">跨境速读 · 一手核验 →</a></div>
   </main>
+<footer class="site-foot">
+  <p><b>2026 全球双十一完全指南</b> · 核验版 · 编制 2026-11-10</p>
+  <p class="foot-links"><span>8 份文档 · 148 个可核验来源 · 单页离线可用</span><span aria-hidden="true">·</span><a href="../index.html">回到首页</a><span aria-hidden="true">·</span><span>按 <kbd>/</kbd> 检索</span></p>
+</footer>
 </div>
 <button class="toTop" id="toTop" aria-label="回到顶部">↑</button>
-<script src="../site.js?v=7"></script>
-<script id="searchData" type="application/json">[{"p":"p21.html","a":"p21","t":"汽车·出行·线下·防坑","x":"本文件为总纲的补充章节，事实由主代理亲自打开官网原文核验；标注规则同总纲。"},{"p":"p21.html","a":"p21","t":"汽车·出行·线下·防坑","x":"2bis. 国补品类边界：今年「收缩 + 新增」并存，最容易踩的坑"},{"p":"p21.html","a":"p21-h-2bis国补品类边界今年收缩新增并存最容易踩的坑","t":"汽车·出行·线下·防坑","x":"收缩（媒体 2025-12-31 起多源一致，469 号文原文只列 6 类可反向印证）：全国统一补贴的家电从 2025 年的 12 类精简为 6 类——冰箱、洗衣机、电视、空调、热水器、电脑。净水器、洗碗机、电饭煲、微波炉、吸油烟机、家用灶具等厨电，以及智能家居（含适老化家居）不再属于全国统一补贴范"},{"p":"p21.html","a":"p21-h-2bis国补品类边界今年收缩新增并存最容易踩的坑","t":"汽车·出行·线下·防坑","x":"实操含义：洗碗机、扫地机、净水器、厨电今年吃不到 15% 国补，只能靠平台券/官方立减（个别地方若有自主补贴，以当地商务局公告为准）。别用去年「全部家电补 15%」的经验算今年的价。今年国补主力就是那 6 类大家电 + 4 类数码。"},{"p":"p21.html","a":"p21-h-2bis国补品类边界今年收缩新增并存最容易踩的坑","t":"汽车·出行·线下·防坑","x":"新增（多源核实）：智能眼镜是唯一新增品类，与手机、平板、智能手表（手环）并列，同属「单件 ≤6000 元 → 15% → 每件 ≤500 元」。中新网 2025-12-30 视频报道、新浪新闻 2026-03-24、什么值得买 2026-01-25/01-29 均有解读；示例：1999 元智能眼镜约"},{"p":"p21.html","a":"p21-h-2bis国补品类边界今年收缩新增并存最容易踩的坑","t":"汽车·出行·线下·防坑","x":"选购提示：① 单价须 ≤6000 元；② 必须是「智能眼镜」品类（普通近视镜/太阳镜/老花镜不算）；③ 走平台「国补专区」核销、实名单件单票；④ 若涉及验光配镜、镜片度数、售后维修，先问清是否影响国补与退换。"},{"p":"p21.html","a":"p21-h-2bis国补品类边界今年收缩新增并存最容易踩的坑","t":"汽车·出行·线下·防坑","x":"线下与县域是今年政策明确倾斜方向一手：第二节要求「鼓励线下门店打造多元化消费场景，深挖品牌专卖店、专业店等实体零售潜力」；第三节专列「保障农村居民享受补贴政策」，要求线上渠道保障农村地区补贴消费需求、支持县城综合商贸服务中心与乡镇商贸中心参与。所以线下门店和县域消费者今年不是「顺带覆盖」，而是明文倾"},{"p":"p21.html","a":"p21-h-2bis国补品类边界今年收缩新增并存最容易踩的坑","t":"汽车·出行·线下·防坑","x":"3. 汽车：双十一买车的真正折扣来自国补，不是平台券一手"},{"p":"p21.html","a":"p21-h-3汽车双十一买车的真正折扣来自国补不是平台券一手","t":"汽车·出行·线下·防坑","x":"《商务部等8部门办公厅关于印发〈2026年汽车以旧换新补贴实施细则〉的通知》，发布 2025-12-30 20:14，依据发改环资〔2025〕1745号 + 商消费函〔2025〕697号；自 2026-01-01 起执行。 原文（已打开验证正文完整）：www.mofcom.gov.cn/art_2a"},{"p":"p21.html","a":"p21-h-3汽车双十一买车的真正折扣来自国补不是平台券一手","t":"汽车·出行·线下·防坑","x":"3.1 两条通道，金额差别很大"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"报废 2013-06-30 前登记的汽油乘用车 / 2015-06-30 前的柴油及其他燃料乘用车 / 2019-12-31 前登记的新能源乘用车"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"新能源乘用车（须在工信部《减免车辆购置税的新能源汽车车型目录》内）"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"新车价税合计 12%"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"2.0L 及以下排量燃油乘用车"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"售卖转让本人名下乘用车"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"2.0L 及以下燃油乘用车"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"关键约束（决定了你有没有资格）： - 每人 2026 年只能在「报废更新」与「置换更新」中二选一，且仅一次。 - 旧车须于 2025-01-08 前登记在申请人名下；旧车所有人与新车所有人须为同一人。 - 报废/置换相关证明、新车发票与登记证书均须 2026-01-01 起取得；发票与登记证书须在同"},{"p":"p21.html","a":"p21-h-31两条通道金额差别很大","t":"汽车·出行·线下·防坑","x":"3.2 与双十一的关系（判断，非官方口径）"},{"p":"p21.html","a":"p21-h-32与双十一的关系判断非官方口径","t":"汽车·出行·线下·防坑","x":"双十一期间的「购车优惠」多为厂商/平台让利，与国补是两条独立的钱，理论上可叠加，但国补按「新车销售价格（价税合计）」的固定比例计算，厂商降价反而会让补贴金额变小。"},{"p":"p21.html","a":"p21-h-32与双十一的关系判断非官方口径","t":"汽车·出行·线下·防坑","x":"因此最优解是先把厂商/平台优惠谈到底，再算国补，而不是指望「双十一当天补贴更高」。"},{"p":"p21.html","a":"p21-h-32与双十一的关系判断非官方口径","t":"汽车·出行·线下·防坑","x":"值得注意的宏观反差：2026 年前 8 个月汽车类零售额同比 -13.9%，通讯器材类 +16.3%媒体。车市承压意味着议价空间可能比往年更大，但补贴额度也更容易在年底吃紧——建议比价与核额度并行，别拖到 12 月。"},{"p":"p21.html","a":"p21-h-32与双十一的关系判断非官方口径","t":"汽车·出行·线下·防坑","x":"⚠️ 网上「2026 双十一购车攻略」里流传的「报废更新 12%/最高 2 万」与「置换 8%/最高 1.5 万」经常被混写成「购车补贴」，也有站点写成「购置税减半」等未见于该细则的说法，请以上表原文为准。"},{"p":"p21.html","a":"p21-h-32与双十一的关系判断非官方口径","t":"汽车·出行·线下·防坑","x":"4. 出行 / 本地生活：适合「囤可退券」，不适合囤具体日期"},{"p":"p21.html","a":"p21-h-4出行本地生活适合囤可退券不适合囤具体日期","t":"汽车·出行·线下·防坑","x":"这一块 2026 年的检索结果几乎全是软文（咸宁新闻网、天眼查资讯、头条号、券老大等批量产出「机票优惠口令」「美团飞行999」类导购文，且夹杂 2025 年旧文如「飞猪双11全量开售」2025-10-20）。未查到 2026 年官方活动页的一手信息，因此只给不依赖时效的方法，不编造券额与日期。"},{"p":"p21.html","a":"p21-h-4出行本地生活适合囤可退券不适合囤具体日期","t":"汽车·出行·线下·防坑","x":"可稳定复用的判断： - 双十一是国内 OTA（飞猪/携程/去哪儿/同程/美团/抖音本地生活）年度大促节点之一，常见形态是酒店套餐 / 房券 / 机票次卡 / 景区通票 / 餐饮团购券，多为「先囤后约、未约可退」。 - 值得买：可全额退、有效期覆盖到次年淡季、且不限制节假日的房券/餐券；连锁酒店集团积"},{"p":"p21.html","a":"p21-h-4出行本地生活适合囤可退券不适合囤具体日期","t":"汽车·出行·线下·防坑","x":"5. 黄金珠宝：别把「大促折扣」当成金价打折"},{"p":"p21.html","a":"p21-h-5黄金珠宝别把大促折扣当成金价打折","t":"汽车·出行·线下·防坑","x":"首饰金价格 = 实时金价 + 工费 + 品牌溢价。双十一能压的主要是工费与平台券，不是金价本身。检索到的 2026 年文章（大众网、新浪新闻 k.sina、红商网等）大量宣称「京东闭眼买 5 折」「搜【懂你好物】直达会场」，属平台营销稿，具体折扣力度未获独立核实，请勿据此下单。"},{"p":"p21.html","a":"p21-h-5黄金珠宝别把大促折扣当成金价打折","t":"汽车·出行·线下·防坑","x":"比价的正确单位：按「克」算到手总价（含工费），并对照当日上海金交所/国际现货金价，而不是看「几折」。"},{"p":"p21.html","a":"p21-h-5黄金珠宝别把大促折扣当成金价打折","t":"汽车·出行·线下·防坑","x":"值得买：克重计价、工费明确、可回购、带检测证书的投资金条/素金；品牌「按件计价」的一口价硬金/3D 硬金通常溢价最高，最不适合比价。"},{"p":"p21.html","a":"p21-h-5黄金珠宝别把大促折扣当成金价打折","t":"汽车·出行·线下·防坑","x":"避坑：确认是否支持回购与回购价差、是否有折旧费、发票是否写明克重与成色、是否为「足金」而非「K 金/镀金」、证书可否官网查验。"},{"p":"p21.html","a":"p21-h-5黄金珠宝别把大促折扣当成金价打折","t":"汽车·出行·线下·防坑","x":"今年监管已要求促销规则显著公示、杜绝「先涨价后降价」（见总纲 2.3），黄金类尤其容易出现「先提挂牌价再打折」，建议截图当日挂牌价再算真实折扣。"},{"p":"p21.html","a":"p21-h-5黄金珠宝别把大促折扣当成金价打折","t":"汽车·出行·线下·防坑","x":"6. 线下：国补同样覆盖实体门店，这是今年最容易被忽略的一块一手"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"商务部 469 号文（总纲 2.2）明确「支持实体零售发展」「统筹线上线下两个渠道」，因此以下线下场景原则上与线上同享 15% 国补，且常有门店自行叠加的以旧换新/赠品："},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"家电连锁 / 品牌专卖店（苏宁、国美及各地连锁、海尔/美的/格力专卖店）"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"1 级能效冰洗空热电视电脑，国补 15% 最高 1500 元"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"当场能否核销国补、是否需云闪付实名、发票是否列明补贴额、安装/旧机回收是否另收费"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"3C 数码门店 / Apple 授权经销"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"≤6000 元手机平板手表智能眼镜，国补 15% 最高 500 元"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"是否「单张发票单件」、是否强制搭售配件（原文禁止）、版本是否国行"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"百货 / 购物中心"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"美妆、服饰、黄金珠宝的满赠、店庆与双十一叠加"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"满赠是否可退、赠品是否写入小票"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"会员店 / 商超（山姆、Costco、盒马、大润发等）"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"食品囤货、家清、母婴；常与双十一错峰做自有促销"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"大包装单位价是否真的更低、保质期"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"免税店（海南离岛、中免）"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"香水化妆品、腕表、电子产品，与「离岛免税额度」叠加"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"免税额度、提货方式、是否限购、能否与双十一券同享"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"美团 / 大众点评 / 抖音团购"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"餐饮、电影、SPA、亲子、健身次卡"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"有效期、节假日通用性、未核销退款规则"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"见第 3 节国补"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"不得强制指定旧车交售企业（细则第十七条）"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"线下的真实优势：可当场验机验货、避免大件物流与安装纠纷、能谈「样机/展示机」额外折扣、旧机现场评估。真实劣势：型号与库存少于线上、价格透明度低（务必先记下线上券后价再进店）、部分门店国补额度更紧张。"},{"p":"p21.html","a":"p21-h-6线下国补同样覆盖实体门店这是今年最容易被忽略的","t":"汽车·出行·线下·防坑","x":"7. 防坑工具箱（不依赖时效，本届尤其适用）"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"三条线比价：该商品 30 天历史价（比价工具/浏览器插件）／当前券后价／同款其他渠道价。今年监管点名「先涨价后降价」，历史价比任何\"折扣标签\"都可靠。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"算到手价的固定顺序：标价 → 官方立减 → 店铺券 → 平台券 → 红包 → 国补（券后价×15%，封顶） → 支付优惠（银行卡/免息）。今年取消跨店满减后不再有「凑单门槛」，但券的适用品类与叠加顺序仍需逐项确认。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"国补四查：品类是否在 10 类内、能效是否 1 级（家电）/单价是否 ≤6000（数码）、本人每类是否还有名额、本地额度是否还有。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"留证四件套：商品页截图（含时间）、优惠券说明、客服承诺的聊天记录、开票信息。发票须实名、单件单票、写明初始价/补贴额/实付额（469 号文硬要求）。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"价保：下单后立刻在 App 内查看价保期限；11/11 当天与返场期各查一次，一键申请差价。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"退货：七日无理由（今年合规提示再次督促）；国补商品退货应恢复补贴资格（469 号文），若平台拒绝，引用原文。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"拒绝口令与陌生链接：「搜索 XXX 领红包」是返利引流；任何要求脱离平台付款、加微信、点短链的都不参与。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"跨境额外四查：电压/插头/频段版本、清关税费与 2026 年 de minimis / 欧盟 €3+€2 变化、保修是否覆盖本地、退货运费谁承担；优先本地仓 / Choice / Fast & Free（详见 03a-跨境一手核验.md 与 03-跨境电商详版.md）。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"别为「便宜」制造需求：今年规则简化后少了凑单诱导，但仍有用「限时」「仅剩 N 件」制造紧迫感。真需求才买。"},{"p":"p21.html","a":"p21-h-7防坑工具箱不依赖时效本届尤其适用","t":"汽车·出行·线下·防坑","x":"9. 已确认 vs 未确认清单（诚实交代证据缺口）"},{"p":"p21.html","a":"p21-h-9已确认vs未确认清单诚实交代证据缺口","t":"汽车·出行·线下·防坑","x":"已确认（一手 / 官网原文） - 2026 年家电数码国补：6+4 类、15%、上限 1500/500 元、1 级能效、数码 ≤6000 元、智能眼镜新增、禁止先涨后补、支持线下、实名单件单票（商办流通函 2025 年第 469 号）。 - 2026 年汽车以旧换新：报废 12%/2 万、10%/1"},{"p":"p21.html","a":"p21-h-9已确认vs未确认清单诚实交代证据缺口","t":"汽车·出行·线下·防坑","x":"媒体级（2026 年报道，方向一致但非平台一手公告） - 天猫取消跨店满减改官方立减、京东取消定金预售改现货、抖音官方立减 15%、拼多多平台全额承担满减券、京东 30 天价保。 - 天猫/淘宝招商规则档期：经中服网与亿邦动力两家独立转述一致（预售 10/15–10/25、现货 10/20–11/1"},{"p":"p21.html","a":"p21-h-9已确认vs未确认清单诚实交代证据缺口","t":"汽车·出行·线下·防坑","x":"未确认：京东/抖音/拼多多/唯品会/苏宁/快手 2026 官方活动公告与精确开局/收官日期（软文多套说法互相矛盾）；第四批国补资金规模与地方额度；AliExpress 巴西/韩国/中东/日本/澳洲等站点分段与券额；Temu / SHEIN / TikTok Shop 东南亚 2026 官方 11.1"},{"p":"p21.html","a":"p21-h-9已确认vs未确认清单诚实交代证据缺口","t":"汽车·出行·线下·防坑","x":"已补充（官方/招商规则级）：天猫/淘宝招商规则档期（现货到 11/13）、AI Token 独立品类与 QAIPC 清单、AliExpress 美/德 11/1–11/18 与意大利三段式 11/1–12/3、Newegg 11/1–11/30、Walmart 11/12–12/2、Shopee M"}]</script>
-
-<script>
-(function(){
-  var D=window.D11; if(!D)return;
-  var q=D.$('#q'), res=D.$('#results'), cnt=D.$('#searchcount');
-  if(!q||!res)return;
-  var IDX=[];
-  if(window.D11_IDX&&window.D11_IDX.length){IDX=window.D11_IDX}
-  else{var sd=D.$('#searchData'); if(sd){try{IDX=JSON.parse(sd.textContent)}catch(e){}}}
-  var loading=false, pending=null;
-  function ensureIndex(cb){
-    if(IDX.length){cb();return}
-    if(!loading){
-      loading=true;
-      var sc=document.createElement('script');
-      sc.src=(location.pathname.indexOf('/pages/')>=0?'../':'')+'search-index.js?v='+window.D11_VER;
-      sc.onload=function(){IDX=window.D11_IDX||[];loading=false;var p=pending;pending=null;if(p)p()};
-      sc.onerror=function(){loading=false;var p=pending;pending=null;if(p)p()};
-      document.head.appendChild(sc);
-    }
-    pending=cb;
-  }
-  var timer=null, marks=[];
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function hi(text,terms){var out=esc(text);terms.forEach(function(t){if(!t)return;
-    out=out.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<b>$1</b>')});return out}
-  function clearMarks(){
-    marks.forEach(function(m){var p=m.parentNode;if(p){p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()}});
-    marks=[]; D.$$('.doc.flash').forEach(function(d){d.classList.remove('flash')});
-  }
-  /* 在指定根节点内把命中词包成 <mark> */
-  function highlightIn(root,terms){
-    if(!terms||!terms.length||!root) return 0;
-    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false),nodes=[];
-    while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE|MARK)$/.test(n.parentNode.nodeName))nodes.push(n)}
-    var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
-    nodes.forEach(function(n){var v=n.nodeValue;if(!v)return;re.lastIndex=0;if(!re.test(v))return;re.lastIndex=0;
-      var fr=document.createDocumentFragment(),last=0,m;
-      while((m=re.exec(v))!==null){
-        fr.appendChild(document.createTextNode(v.slice(last,m.index)));
-        var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);
-        last=m.index+m[0].length;
-      }
-      if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
-      n.parentNode.replaceChild(fr,n);
-    });
-    return marks.length;
-  }
-  function jump(href,anchor,terms){
-    if(href && href.indexOf('.html')>=0){
-      var cur=location.pathname.split('/').pop();
-      var tgt=href.split('#')[0];
-      if(tgt===cur){
-        /* 同一页：就地高亮 + 滚动，不重新导航 */
-        clearMarks();
-        var same=document.getElementById(anchor);
-        var scope=(same&&same.closest('.doc'))||document.querySelector('.doc')||document.body;
-        highlightIn(scope,terms);
-        if(same) same.scrollIntoView({behavior:'smooth',block:'start'});
-        var dd=(scope.classList&&scope.classList.contains('doc'))?scope:null;
-        if(dd){dd.classList.add('flash');setTimeout(function(){dd.classList.remove('flash')},1600)}
-        res.classList.remove('on'); D.closeMenu();
-        return;
-      }
-      var url=tgt+(anchor?'#'+anchor:'');
-      try{D.store('d11_jump_terms',JSON.stringify(terms||[]))}catch(e){}
-      location.href=url; return;
-    }
-    var d=document.getElementById(href.replace('#','')); if(!d)return;
-    d.classList.remove('collapsed');
-    var target=(anchor&&document.getElementById(anchor))||d;
-    clearMarks();
-    if(terms&&terms.length){
-      var body=d.querySelector('.doc-body')||document.body;
-      var w=document.createTreeWalker(body,NodeFilter.SHOW_TEXT,null,false),nodes=[];
-      while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE)$/.test(n.parentNode.nodeName))nodes.push(n)}
-      var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
-      nodes.forEach(function(n){var v=n.nodeValue;if(!re.test(v))return;re.lastIndex=0;
-        var fr=document.createDocumentFragment(),last=0,m;
-        while((m=re.exec(v))!==null){fr.appendChild(document.createTextNode(v.slice(last,m.index)));
-          var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);last=m.index+m[0].length}
-        if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
-        if(marks.length<400)n.parentNode.replaceChild(fr,n)});
-    }
-    target.scrollIntoView({behavior:'smooth',block:'start'});
-    d.classList.add('flash');setTimeout(function(){d.classList.remove('flash')},1600);
-    res.classList.remove('on'); D.closeMenu();
-  }
-  function render(){
-    var v=q.value.trim();
-    if(!v){res.classList.remove('on');cnt.textContent='';clearMarks();return}
-    if(!IDX.length){cnt.textContent='加载索引…';ensureIndex(function(){render()});return}
-    var terms=v.toLowerCase().split(/\s+/).filter(Boolean);
-    var hits=IDX.filter(function(it){return terms.every(function(t){return it.x.toLowerCase().indexOf(t)>=0})});
-    cnt.textContent=hits.length?hits.length+' 条命中':'无结果';
-    var out='<div class="res-h">'+hits.length+' 条命中 · 前 40 条 · 回车跳到第一条</div>';
-    if(!hits.length)out+='<div class="res-empty">没有匹配内容。试试「国补」「15%」「AliExpress」「黑五」「价保」。</div>';
-    hits.slice(0,40).forEach(function(it,i){
-      out+='<a class="res-i" tabindex="0" data-i="'+i+'" data-p="'+esc(it.p||'')+'" data-a="'+esc(it.a||'')+'">'
-        +'<span class="rt">'+esc(it.t)+'</span><span class="rq">'+hi(it.x,terms)+'</span></a>';
-    });
-    res.innerHTML=out;res._hits=hits;res._terms=terms;res.classList.add('on');
-    D.$$('.res-i',res).forEach(function(el){
-      function go(){var h=res._hits[+el.dataset.i];jump(el.dataset.p||('#'+h.d),el.dataset.a,res._terms)}
-      el.addEventListener('click',go);el.addEventListener('keydown',function(e){if(e.key==='Enter')go()});
-    });
-  }
-  q.addEventListener('focus',function(){ensureIndex(function(){})});
-  q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(render,140)});
-  q.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){q.value='';res.classList.remove('on');cnt.textContent='';clearMarks();q.blur()}
-    if(e.key==='Enter'&&res.classList.contains('on')){var f=res.querySelector('.res-i');if(f)f.click()}
-  });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();q.select()}
-  });
-  document.addEventListener('click',function(e){if(!e.target.closest('.searchbox'))res.classList.remove('on')});
-  /* 站内锚点：展开被折叠的文档 */
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a.internal, a[href^="#doc-"], a[href^="#p"]');if(!a)return;
-    var d=document.getElementById(a.getAttribute('href').slice(1));
-    if(d&&d.classList.contains('doc'))d.classList.remove('collapsed');
-  });
-  /* 跨页跳转后：展开文档、滚到锚点、按存下的词高亮 */
-  try{
-    var savedTerms=[];
-    try{savedTerms=JSON.parse(D.load('d11_jump_terms','[]'))||[]}catch(e){}
-    D.store('d11_jump_terms','[]');
-    if(location.hash){
-      var aid;
-      try{aid=decodeURIComponent(location.hash.slice(1))}catch(e){aid=location.hash.slice(1)}
-      var d=document.getElementById(aid)||document.getElementById(aid.replace(/-h-.*$/,''));
-      if(d&&d.classList&&d.classList.contains('doc'))d.classList.remove('collapsed');
-      var go=function(){
-        var t=document.getElementById(aid);
-        if(t){t.scrollIntoView({block:'start'});}
-        else if(d){d.scrollIntoView({block:'start'})}
-      };
-      /* 等布局稳定后再滚，避免图片/表格回流导致位置偏移 */
-      requestAnimationFrame(function(){setTimeout(go,60)});
-      if(savedTerms.length){
-        setTimeout(function(){
-          clearMarks();
-          var scope=(document.getElementById(aid)||{}).closest?
-            (document.getElementById(aid)||{}).closest('.doc'):null;
-          scope=scope||document.querySelector('.doc');
-          highlightIn(scope||document.body,savedTerms);
-        },220);
-      }
-      window.addEventListener('load',function(){setTimeout(go,80)});
-    }
-  }catch(e){}
-})();
-</script>
 
 </body></html>

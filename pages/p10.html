@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>总纲 · 已核验事实 · 2026 双十一指南</title>
-<link rel="stylesheet" href="../site.css?v=7">
+<link rel="stylesheet" href="../site.css?v=12">
+<script>
+(function(){try{var r=document.documentElement;var d=localStorage.getItem('d11_theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');r.dataset.theme=d;var n=localStorage.getItem('d11_density');if(n)r.dataset.density=n;var f=localStorage.getItem('d11_font');if(f)r.dataset.fontscale=f}catch(e){}})();
+</script>
+<script src="../site.js?v=12" defer></script>
+<script src="../search.js?v=12" defer></script>
 <meta name="description" content="2026 全球双十一（11.11）值得参加的活动与商品指南：线上线下、中国大陆 + 跨境 + 区域市场，每条关键事实标注来源与可信等级（一手/媒体/单源/存疑），含 148 个可核验来源链接。">
 <meta name="theme-color" content="#0f766e">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -18,53 +23,75 @@
 <meta name="twitter:title" content="总纲 · 已核验事实 · 2026 双十一指南">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <header class="topbar">
-  <button class="tb-btn menu-toggle" id="menuBtn" aria-label="目录">☰ 目录</button>
-  <div class="brandmark"><a href="../index.html" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none">
-    <span class="logo">11</span><span class="bt">双十一完全指南<small>2026 · 核验版</small></span></a></div>
-  <div class="searchbox">
-    <span class="si">⌕</span>
-    <input id="q" type="search" placeholder="全文检索：国补 / AliExpress / 黑五 / 智能眼镜 …" autocomplete="off" aria-label="全文检索">
-    <kbd>/</kbd><div class="results" id="results"></div>
+  <button class="tb-btn icon menu-toggle" id="menuBtn" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="brandmark"><a href="../index.html" aria-label="返回首页">
+    <span class="logo" aria-hidden="true">11</span><span class="bt">双十一完全指南<small>2026 · 核验版</small></span></a></div>
+  <div class="searchbox" id="searchbox">
+    <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></svg></span>
+    <input id="q" type="search" placeholder="搜索全文：国补 / AliExpress / 黑五 / 价保 …" name="q" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="全文检索" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="results">
+    <button class="sclear" id="searchClear" type="button" aria-label="清除搜索" hidden>✕</button>
+    <kbd aria-hidden="true">/</kbd>
+    <div class="results" id="results" role="listbox" aria-label="搜索结果"></div>
   </div>
-  <span class="searchcount" id="searchcount"></span>
+  <span class="searchcount" id="searchcount" role="status" aria-live="polite"></span>
   <div class="tb-actions">
-    <button class="tb-btn opt" id="densityBtn" title="切换信息密度">密度</button>
-    <button class="tb-btn opt" id="fontBtn" title="切换字号">A<sup>±</sup></button>
-    <button class="tb-btn" id="themeBtn" title="深浅色">◐ 深色</button>
-    <button class="tb-btn opt" id="expandBtn" title="展开/折叠全部">全部展开</button>
+    <button class="tb-btn icon" id="themeBtn" type="button" title="切换深浅色" aria-label="切换深浅色" aria-pressed="false">
+      <span class="theme-ico"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></span>
+    </button>
+    <button class="tb-btn icon" id="toolsBtn" type="button" title="阅读设置" aria-label="阅读设置" aria-expanded="false" aria-controls="toolsPop"><span class="aa" aria-hidden="true">Aa</span></button>
+    <button class="tb-btn icon opt" id="expandBtn" type="button" title="全部折叠" aria-label="全部折叠"><span aria-hidden="true">⇕</span></button>
+  </div>
+  <div class="tools-pop" id="toolsPop" hidden>
+    <div class="tp-head"><span>阅读设置</span><button class="tp-close" id="toolsClose" type="button" aria-label="关闭阅读设置">✕</button></div>
+    <div class="tp-group"><span class="tp-label">主题</span><div class="seg" data-pref="theme" role="group" aria-label="主题">
+      <button type="button" data-val="light">浅色</button><button type="button" data-val="dark">深色</button></div></div>
+    <div class="tp-group"><span class="tp-label">密度</span><div class="seg" data-pref="density" role="group" aria-label="信息密度">
+      <button type="button" data-val="compact">紧凑</button><button type="button" data-val="normal">标准</button><button type="button" data-val="relaxed">宽松</button></div></div>
+    <div class="tp-group"><span class="tp-label">字号</span><div class="seg" data-pref="font" role="group" aria-label="字号">
+      <button type="button" data-val="s">小</button><button type="button" data-val="m">中</button><button type="button" data-val="l">大</button></div></div>
+    <button class="tp-action" id="expandBtn2" type="button">全部折叠</button>
   </div>
 </header>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 <div class="scrim" id="scrim"></div>
 <div class="layout">
-<aside class="sidebar" id="sidebar">
-<h4>内容导航</h4>
-<a class="nav-doc" href="../index.html">⌂ 首页 · 仪表盘<small>全局检索 · 速查 KPI</small></a>
-<h4>开始</h4>
-<a class="nav-doc" href="p00.html" data-target="p00">一页速查<small>结论 · 时间轴 · 已确认/未确认</small></a>
-<h4>核心事实</h4>
-<a class="nav-doc active" href="p10.html" data-target="p10">总纲 · 已核验事实<small>此刻行动 · 国补原文 · 监管 · 证据污染</small></a>
-<h4>中国大陆</h4>
-<a class="nav-doc" href="p20.html" data-target="p20">大陆详版<small>玩法 · 品类型号 · 线下 · 证据缺口</small></a>
-<a class="nav-doc" href="p21.html" data-target="p21">汽车·出行·线下·防坑<small>国补边界 · 汽车细则 · 工具箱</small></a>
-<h4>跨境电商</h4>
-<a class="nav-doc" href="p30.html" data-target="p30">跨境速读 · 一手核验<small>AliExpress 官方通稿 · 实操九条</small></a>
-<a class="nav-doc" href="p31.html" data-target="p31">跨境详版<small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></a>
-<h4>区域市场</h4>
-<a class="nav-doc" href="p40.html" data-target="p40">区域速读<small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></a>
-<a class="nav-doc" href="p41.html" data-target="p41">区域详版<small>站内官方日历 · 完整核验记录</small></a>
-<div class="legend">
-      <b>证据等级图例</b>
-      <div class="lg"><i style="background:var(--brand)"></i>一手 · 政府/平台官网原文</div>
-      <div class="lg"><i style="background:var(--amber-line)"></i>媒体 · 2026 署名报道</div>
-      <div class="lg"><i style="background:var(--blue-line)"></i>单源 / 推断 · 待验证</div>
-      <div class="lg"><i style="background:var(--red-line)"></i>存疑 / 未查到 · 不采信</div>
-      <div class="lg"><i style="background:#b9c0c8"></i>访问受限 · 页面打不开</div>
-    </div>
-    <div class="meta">8 份文档 · 148 个来源链接<br>单页离线 · 无外部请求<br>键盘：<b>/</b> 检索 · <b>Esc</b> 关闭</div>
-  </aside>
-  <main class="main">
+<aside class="sidebar" id="sidebar" aria-label="内容导航">
+  <div class="side-head"><span>内容导航</span><button class="side-close" id="sideClose" type="button" aria-label="关闭目录">✕</button></div>
+  <nav class="side-nav" aria-label="文档导航">
+    <a class="nav-doc" href="../index.html">⌂ 首页 · 仪表盘<small>全局检索 · 速查 KPI</small></a>
+    <p class="side-label">开始</p>
+    <a class="nav-doc" href="p00.html">一页速查<small>结论 · 时间轴 · 已确认/未确认</small></a>
+    <p class="side-label">核心事实</p>
+    <a class="nav-doc active" href="p10.html" aria-current="page">总纲 · 已核验事实<small>此刻行动 · 国补原文 · 监管 · 证据污染</small></a>
+    <p class="side-label">中国大陆</p>
+    <a class="nav-doc" href="p20.html">大陆详版<small>玩法 · 品类型号 · 线下 · 证据缺口</small></a>
+    <a class="nav-doc" href="p21.html">汽车·出行·线下·防坑<small>国补边界 · 汽车细则 · 工具箱</small></a>
+    <p class="side-label">跨境电商</p>
+    <a class="nav-doc" href="p30.html">跨境速读 · 一手核验<small>AliExpress 官方通稿 · 实操九条</small></a>
+    <a class="nav-doc" href="p31.html">跨境详版<small>分站点档期 · 税制 · 型号清单 · 阴性结果</small></a>
+    <p class="side-label">区域市场</p>
+    <a class="nav-doc" href="p40.html">区域速读<small>日本 · 港澳台 · 东南亚 · 欧美 · 旅游</small></a>
+    <a class="nav-doc" href="p41.html">区域详版<small>站内官方日历 · 完整核验记录</small></a>
+  </nav>
+  <div class="side-section" id="sideToc" hidden>
+    <p class="side-label">本页目录</p>
+    <div class="side-toc" id="sideTocList"></div>
+  </div>
+  <div class="legend">
+    <b>证据等级图例</b>
+    <div class="lg"><i style="background:var(--brand)"></i>一手 · 政府/平台官网原文</div>
+    <div class="lg"><i style="background:var(--amber-line)"></i>媒体 · 2026 署名报道</div>
+    <div class="lg"><i style="background:var(--blue-line)"></i>单源 / 推断 · 待验证</div>
+    <div class="lg"><i style="background:var(--red-line)"></i>存疑 / 未查到 · 不采信</div>
+    <div class="lg"><i style="background:#b9c0c8"></i>访问受限 · 页面打不开</div>
+  </div>
+  <div class="meta">8 份文档 · 148 个来源链接<br>单页离线 · 无外部请求<br>键盘：<b>/</b> 检索 · <b>Esc</b> 关闭</div>
+</aside>
+  <main class="main" id="main" tabindex="-1">
     <div class="crumb"><a href="../index.html">首页</a> / 核心事实 / <b>总纲 · 已核验事实</b></div>
+    <h1 class="sr-only">总纲</h1>
     
 <section class="doc" id="p10">
   <div class="doc-head" data-toggle="p10">
@@ -297,163 +324,11 @@
 <!-- 以下章节由三路研究代理补充：中国大陆品类与线下、跨境电商与实操、区域市场线上线下 --></div>
 </section><div class="pager"><a href="p00.html">← 一页速查</a><a class="mid" href="../index.html">⌂ 目录</a><a href="p20.html">大陆详版 →</a></div>
   </main>
+<footer class="site-foot">
+  <p><b>2026 全球双十一完全指南</b> · 核验版 · 编制 2026-11-10</p>
+  <p class="foot-links"><span>8 份文档 · 148 个可核验来源 · 单页离线可用</span><span aria-hidden="true">·</span><a href="../index.html">回到首页</a><span aria-hidden="true">·</span><span>按 <kbd>/</kbd> 检索</span></p>
+</footer>
 </div>
 <button class="toTop" id="toTop" aria-label="回到顶部">↑</button>
-<script src="../site.js?v=7"></script>
-<script id="searchData" type="application/json">[{"p":"p10.html","a":"p10","t":"总纲 · 已核验事实","x":"编制时间：2026-11-10 23:34（UTC+8，周二深夜）｜适用：中国大陆 + 跨境 + 各区域市场，线上与线下 证据分级：一手 政府/平台官网原文 · 媒体 2026 年署名媒体报道 · 单源 仅一个二手来源、未获交叉验证 · 存疑 疑似 AI 生成/SEO 软文，仅作线索"},{"p":"p10.html","a":"p10","t":"总纲 · 已核验事实","x":"⚠️ 本届双十一的中文搜索结果被大量 AI 生成导购文污染（详见第 8 节）。本指南对每条关键事实标注来源与可信等级；凡是查不到 2026 年一手来源的，明确写「未查到」，绝不拿往年规则冒充。"},{"p":"p10.html","a":"p10","t":"总纲 · 已核验事实","x":"0. 现在这一刻：11 月 10 日 23:34 该做什么"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"2026-11-11 是周三；美国感恩节 11/26（四）、黑五 11/27（五）、网一 11/30（一）。（日历经程序核验）"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"按本届已披露的「长周期、现货为主」节奏，11/10 深夜处在峰值日之前、现货期内（天猫现货到 11/13，见 2.1），所以此刻的收益点不在「抢开抢」或「赶尾款」，而在收口与保价："},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"清理购物车：把加购超过一周、现在仍想买的留下，其余删掉。今年取消跨店满减后不需要为凑单留货（见 2.1）。天猫现货期到 11/13 23:59，还有约 3 天，不必挤在今晚 0 点下单；预售尾款 10/25 已截止，今晚不存在「尾款作废」这回事。"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"核对已付订单的价保：京东今年主打「30 天自动价保」媒体，天猫/淘宝有价保中心。已在 10 月大促期下单的，现在逐单检查是否可一键申请差价。"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"截图存证：目标商品当前的券后价、国补后价、赠品清单，逐页截图。今年监管明确要求自查「先涨价后降价」（见 2.3），截图是后续价保与投诉的直接证据。"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"确认国补资格：进入平台「国补专区 / 以旧换新」看本地额度是否还有、资格是否已领（详见 2.2）。额度先到先得，别等到 11/11 当天。"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"别信「红包口令」：所有「搜索 XXX 领大额红包」均为返利引流话术，不是平台官方福利（见第 8 节）。"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"跨境用户注意时差：AliExpress / 东南亚各站以当地时区为准（WIB 雅加达 = UTC+7，比北京晚 1 小时），「11/10 20:00 WIB」= 北京时间 21:00，已过；「11/11 00:00–02:00 本地」的午夜场才刚要开始。"},{"p":"p10.html","a":"p10-h-0现在这一刻11月10日2334该做什么","t":"总纲 · 已核验事实","x":"1. 全球时间轴与「该等还是该买」决策表"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"2026-11-11（三）"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"中国全平台、AliExpress、Lazada、Shopee、港澳台、日韩"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"中国品牌 3C/配件/小家电、国补品类，当天收口"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"11/12–11/18单源"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"补漏，别指望更深折扣"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"2026-11-27（五）"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"美国/欧洲/澳洲实体与线上零售"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"欧美品牌电视、笔记本、游戏机、大家电"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"2026-11-30（一）"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"全球线上，3C 数码为主"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"数码配件、软件订阅、云服务"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"双 12 / 年货节"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"12 月–次年 1 月"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"食品囤货、礼品、年节礼盒可比双十一更合适"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"核心判断（11.11 vs 黑五，相隔 16 天）"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"更该在 11.11 买"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"更该等黑五/网一"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"中国品牌手机/平板/穿戴、智能眼镜"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"国补覆盖 ≤6000 元机型，11.11 是中国主场"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"充电/储能/配件（Anker、UGREEN、Baseus）"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"中国供应链，11.11 全球最低价段常出现"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"扫地机/洗地机/空气净化（Roborock、Ecovacs、Dreame）"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"同上，且国内型号最全"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"白电/黑电（1 级能效）"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"国补 15%、单件最高 1500 元，仅中国境内"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"欧美品牌电视、游戏机、笔记本"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"黑五是欧美主场，11.11 只是 Early Access"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"美妆、母婴、宠物、食品囤货"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"双十一与双 12 常有二次低点，不必死磕当天"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"与金价挂钩，大促让利有限，注意工费"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"旅游/酒店/机票/演出票"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"双十一是国内 OTA 大促节点之一，可囤可退券"},{"p":"p10.html","a":"p10-h-1全球时间轴与该等还是该买决策表","t":"总纲 · 已核验事实","x":"2. 中国大陆：今年三条最硬的事实"},{"p":"p10.html","a":"p10-h-2中国大陆今年三条最硬的事实","t":"总纲 · 已核验事实","x":"2.1 玩法简化（多家 2026 年媒体报道一致，方向可信；具体日期口径有分歧）"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"天猫/淘宝：取消沿用多年的跨店满减，改「官方立减」，单件下单即减，覆盖约 7000 万款商品媒体。不再需要凑单。"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"京东：取消定金预售，全品类现货开卖、优惠单件生效，配套 30 天自动价保媒体。"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"抖音电商：采用「官方立减 15%」媒体。"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"新增现象：有 2026 年媒体报道「AI Token 首次成为独立品类引入大促」单源。"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"已读原文的一手/准一手来源： - 同花顺财经 2026-10-14 13:54《双11大变天：有人掉队就有人超车：跨店满减退场》 news.10jqka.com.cn/c680677323.shtml （该文标注「基于人工智能算法」，属媒体转述级；文中引国家统计局：2026 前 8 个月社零同比 +"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"⚠️ 关于具体起止日期：本次检索到的软文说法互相矛盾（「京东 10/9 晚 8 点」「京东 10/12 晚 8 点」「淘宝 10/15 10 点 / 早 8 点」「收官 11/11 24:00 / 11/14」等），均使用「官方正式敲定」话术但无一可追溯到平台官网公告，不采信。"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"但有一条更可靠的例外：天猫/淘宝 2026 招商规则经中服网（2026-09-21，转淘天速递）与亿邦动力（2026-09-25）两家独立渠道转述一致，可信度明显高于软文：预售预热 10/15 00:00–19:59、定金 10/15 20:00–10/20 17:59、尾款 10/20 20:00"},{"p":"p10.html","a":"p10-h-21玩法简化多家2026年媒体报道一致方向可信具","t":"总纲 · 已核验事实","x":"2.2 国补延续（本届最可靠、最值钱的一条）一手"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"文件：《商务部等5部门办公厅（室）关于做好2026年家电以旧换新、数码和智能产品购新补贴工作的通知》，商办流通函 2025 年第 469 号，发布 2025-12-31；上位依据《国家发展改革委 财政部关于2026年实施大规模设备更新和消费品以旧换新政策的通知》发改环资〔2025〕1745 号。"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"原文（已打开验证正文完整）：www.mofcom.gov.cn/art_fca1a108eea64d0a85…"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"政策解读：www.mofcom.gov.cn/art_4c7d0a0fc5fb4c8cb4…"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"自 2026-01-01 起全国统一品类与标准："},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"冰箱、洗衣机、电视、空调、热水器、电脑（6 类）"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"1 级能效/水效"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"券后最终价的 15%"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"每件 ≤1500 元"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"手机、平板、智能手表（手环）、智能眼镜（4 类）"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"单件售价 ≤6000 元"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"每件 ≤500 元"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"每人每类限 1 件；智能眼镜是 2026 年新增品类。"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"叠加算法（重要）：15% 是按「扣除各环节优惠后最终销售价」计算。所以顺序是： 标价 → 官方立减/店铺券/平台券/红包 → 得到券后价 → 国补 = 券后价 × 15%（封顶） 券用得越狠，国补金额本身会变小，但总价一定更低。举例：6000 元手机，券后 5000 元 → 国补 500 元（封顶）"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"原文里的实操约束（直接影响能不能买到）： - 申领人、付款人、收货人须一致；必须开实名发票，单张发票只对应单件补贴商品，发票须列明初始价 / 补贴额 / 实付额。 - 明令禁止「先涨价后补贴」、禁止强制捆绑非补贴商品或增值服务；须逐项公示「初始销售价 / 商家优惠让利 / 补贴金额 / 最终销售价」"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"⚠️ 额度风险：469 号文由各地自行组织并公示，资金先到先得。网上「第四批 625 亿 / 690 亿」的说法来自同一批 SEO 软文且金额互相打架（见第 8 节），不可引用。能否叠加、本地额度是否耗尽，一律以当地商务局 / 云闪付 / 平台「国补专区」实时页面为准。"},{"p":"p10.html","a":"p10-h-22国补延续本届最可靠最值钱的一条一手","t":"总纲 · 已核验事实","x":"2.3 监管：11/6 合规提示一手"},{"p":"p10.html","a":"p10-h-23监管116合规提示一手","t":"总纲 · 已核验事实","x":"市场监管总局向主要平台企业发布《「双十一」网络集中促销合规提示》，2026-11-06 起密集报道，央视《朝闻天下》11/8 播出。全文转载（已读正文，来源标注「国家市场监督管理总局」）：finance.sina.com.cn/doc-iniyfqta2725376.sh…"},{"p":"p10.html","a":"p10-h-23监管116合规提示一手","t":"总纲 · 已核验事实","x":"八方面要点中与买家直接相关的： - 严格规范促销行为：对「拼价格」「先涨价后降价」组织自查，杜绝不明码标价、价格欺诈；促销规则须优化并在显著位置公示。 - 清理「幽灵店铺」「幽灵直播间」；核验经营者资质。 - 禁止虚假交易、刷单炒信；规范直播（虚假测评、虚假助农等）。 - 商品管控：假冒伪劣、三无、"},{"p":"p10.html","a":"p10-h-23监管116合规提示一手","t":"总纲 · 已核验事实","x":"买家可用动作：留价格截图 → 用平台价保一键申请 → 未果则以「未明码标价 / 先涨后降」向平台与 12315 投诉。今年监管点名了这一项，投诉的落点比往年清晰。"},{"p":"p10.html","a":"p10-h-23监管116合规提示一手","t":"总纲 · 已核验事实","x":"⚠️ 注意别把 2021 年《关于规范\"双十一\"网络促销经营活动的工作提示》、2023 年同名《合规提示》（九方面）误当成 2026 年新规——搜索里混着这些旧文。"},{"p":"p10.html","a":"p10-h-23监管116合规提示一手","t":"总纲 · 已核验事实","x":"8. 证据质量警告：今年中文搜索被 AI 导购文污染"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"这一节本身是本届双十一最值得写下的「购物风险」。实测发现："},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"把往年数据套上 2026 年份：某些站点把「4982 亿」（2020 年天猫双十一 GMV）、「2684 亿」（2019 年）写成 2026 年成交额/目标。"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"政府网站被注入导购软文：某县政府门户竟出现《2026年双十一活动时间确定》的导购正文，明显是站点被挂马或快照污染。"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"日期互相矛盾却都声称「官方定档」：10/9、10/12、10/15 三种开局日、多种尾款时点并存，无一可追溯到平台公告。"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"国补金额打架：同一批地方新闻网站（漯河网、黄冈新闻网、红安网、红商网及头条号）在 2026-10 批量发布《第四批国补来了！助力双十一！附活动时间表、红包领取口令》，有的写 625 亿、有的写 690 亿，并塞入「京东搜【红包980】」「淘宝搜【红包到手558】」等返利口令——典型同一 SEO 模板"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"英文侧同样有一批 2026 年新生成的优惠券内容农场（pickedco、couponflick、savingarena、bunnycoupon、confirmgood、hopfar、offerix、pickmeadeal、futurecoupon 等），站点真实存在、标题都写着 2026，但内容互相"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"但「看起来像内容农场单源」不等于一定是假的：本指南初查时把「AliExpress 11.11 为 11/1–11/18」标为存疑，后来检索到 PRNewswire 2026-10-29 的 AliExpress 官方通稿（SOURCE AliExpress），确认该档期属实且面向美国站（详见 03a"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"因此本指南的采信顺序：政府/平台官网原文 > 官方新闻通稿（PRNewswire / Business Wire 等，SOURCE 为品牌方）> 权威媒体 2026 年署名报道 > 官方社媒 > 多源一致的媒体转述 > 单源线索（明确标注）> 导购软文（不采信）。"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"本届跨境最重要的结构性变化：欧盟理事会官方政策页《EU action on the influx of small parcels》（www.consilium.europa.eu/eu-action-influx-of-sm… ，浏览器实际打开读到正文，一手）明确：取消 €150 以下关税起征门槛"},{"p":"p10.html","a":"p10-h-8证据质量警告今年中文搜索被AI导购文污染","t":"总纲 · 已核验事实","x":"附：本轮新增的一手来源（后续补入，优先级最高）"},{"p":"p10.html","a":"p10-h-附本轮新增的一手来源后续补入优先级最高","t":"总纲 · 已核验事实","x":"AliExpress 11.11 官方通稿（PRNewswire 2026-10-29 13:00 UTC，SOURCE AliExpress）：11/1–11/18、Brand+ 一周年、PayPal 额外最高 14%、Li-Ning 16–63% / Elitewheels 33–45% / G"},{"p":"p10.html","a":"p10-h-附本轮新增的一手来源后续补入优先级最高","t":"总纲 · 已核验事实","x":"AliExpress UK「Best Price Guarantee」媒体：英国站对标 Amazon / eBay / Temu / SHEIN 同款差价、7 天内退款，另有券上叠加最高 20% off；抽查品类为移动电源、扫地机、投影仪、电视棒。这是把 11.11 与黑五两个窗口连起来的最实用规则"},{"p":"p10.html","a":"p10-h-附本轮新增的一手来源后续补入优先级最高","t":"总纲 · 已核验事实","x":"Walmart 三场假日大促 11/12–12/2（Cord Cutters News 2026-10-28 转述官方公告）。"},{"p":"p10.html","a":"p10-h-附本轮新增的一手来源后续补入优先级最高","t":"总纲 · 已核验事实","x":"Newegg Black Friday Price Protection（官方 Business Wire 通稿 2026-10-30）：Black November 11/1–11/30 每日 Doorbuster + 黑五价保 + 延长假日退货；Best Buy 假日价保 11/1–12/24、"},{"p":"p10.html","a":"p10-h-附本轮新增的一手来源后续补入优先级最高","t":"总纲 · 已核验事实","x":"日本 Amazon スマイルSALE 2026-11-04 09:00～11-12 23:59；Amazon 黑五 2026 年 11 月举办、详情 11/19 上午公布（Yahoo!ニュース）；乐天お買い物マラソン 2026-11-04 20:00～11-11 01:59，买回点数最大 11 倍（"},{"p":"p10.html","a":"p10-h-附本轮新增的一手来源后续补入优先级最高","t":"总纲 · 已核验事实","x":"台湾 momo 官网 2026-11 档期：11/1–11/13 双11年度盛典最高享 5,925；11/10–11/13 双11高槛加码最高享 9,800；11/10–11/11 组队加码 4% 最高享 3,000；11/1–11/30 玉山笔笔加码 6% 最高送 500。"},{"p":"p10.html","a":"p10-h-附本轮新增的一手来源后续补入优先级最高","t":"总纲 · 已核验事实","x":"香港 HKTVmall「多谢祭」2026-10-12～11-12：每日商户低至 5 折、精选低至约 22 折（biz-innovator 2026-10-13）。"}]</script>
-
-<script>
-(function(){
-  var D=window.D11; if(!D)return;
-  var q=D.$('#q'), res=D.$('#results'), cnt=D.$('#searchcount');
-  if(!q||!res)return;
-  var IDX=[];
-  if(window.D11_IDX&&window.D11_IDX.length){IDX=window.D11_IDX}
-  else{var sd=D.$('#searchData'); if(sd){try{IDX=JSON.parse(sd.textContent)}catch(e){}}}
-  var loading=false, pending=null;
-  function ensureIndex(cb){
-    if(IDX.length){cb();return}
-    if(!loading){
-      loading=true;
-      var sc=document.createElement('script');
-      sc.src=(location.pathname.indexOf('/pages/')>=0?'../':'')+'search-index.js?v='+window.D11_VER;
-      sc.onload=function(){IDX=window.D11_IDX||[];loading=false;var p=pending;pending=null;if(p)p()};
-      sc.onerror=function(){loading=false;var p=pending;pending=null;if(p)p()};
-      document.head.appendChild(sc);
-    }
-    pending=cb;
-  }
-  var timer=null, marks=[];
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function hi(text,terms){var out=esc(text);terms.forEach(function(t){if(!t)return;
-    out=out.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<b>$1</b>')});return out}
-  function clearMarks(){
-    marks.forEach(function(m){var p=m.parentNode;if(p){p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()}});
-    marks=[]; D.$$('.doc.flash').forEach(function(d){d.classList.remove('flash')});
-  }
-  /* 在指定根节点内把命中词包成 <mark> */
-  function highlightIn(root,terms){
-    if(!terms||!terms.length||!root) return 0;
-    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false),nodes=[];
-    while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE|MARK)$/.test(n.parentNode.nodeName))nodes.push(n)}
-    var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
-    nodes.forEach(function(n){var v=n.nodeValue;if(!v)return;re.lastIndex=0;if(!re.test(v))return;re.lastIndex=0;
-      var fr=document.createDocumentFragment(),last=0,m;
-      while((m=re.exec(v))!==null){
-        fr.appendChild(document.createTextNode(v.slice(last,m.index)));
-        var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);
-        last=m.index+m[0].length;
-      }
-      if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
-      n.parentNode.replaceChild(fr,n);
-    });
-    return marks.length;
-  }
-  function jump(href,anchor,terms){
-    if(href && href.indexOf('.html')>=0){
-      var cur=location.pathname.split('/').pop();
-      var tgt=href.split('#')[0];
-      if(tgt===cur){
-        /* 同一页：就地高亮 + 滚动，不重新导航 */
-        clearMarks();
-        var same=document.getElementById(anchor);
-        var scope=(same&&same.closest('.doc'))||document.querySelector('.doc')||document.body;
-        highlightIn(scope,terms);
-        if(same) same.scrollIntoView({behavior:'smooth',block:'start'});
-        var dd=(scope.classList&&scope.classList.contains('doc'))?scope:null;
-        if(dd){dd.classList.add('flash');setTimeout(function(){dd.classList.remove('flash')},1600)}
-        res.classList.remove('on'); D.closeMenu();
-        return;
-      }
-      var url=tgt+(anchor?'#'+anchor:'');
-      try{D.store('d11_jump_terms',JSON.stringify(terms||[]))}catch(e){}
-      location.href=url; return;
-    }
-    var d=document.getElementById(href.replace('#','')); if(!d)return;
-    d.classList.remove('collapsed');
-    var target=(anchor&&document.getElementById(anchor))||d;
-    clearMarks();
-    if(terms&&terms.length){
-      var body=d.querySelector('.doc-body')||document.body;
-      var w=document.createTreeWalker(body,NodeFilter.SHOW_TEXT,null,false),nodes=[];
-      while(w.nextNode()){var n=w.currentNode;if(n.parentNode&&!/^(SCRIPT|STYLE|CODE)$/.test(n.parentNode.nodeName))nodes.push(n)}
-      var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
-      nodes.forEach(function(n){var v=n.nodeValue;if(!re.test(v))return;re.lastIndex=0;
-        var fr=document.createDocumentFragment(),last=0,m;
-        while((m=re.exec(v))!==null){fr.appendChild(document.createTextNode(v.slice(last,m.index)));
-          var mk=document.createElement('mark');mk.textContent=m[0];fr.appendChild(mk);marks.push(mk);last=m.index+m[0].length}
-        if(last<v.length)fr.appendChild(document.createTextNode(v.slice(last)));
-        if(marks.length<400)n.parentNode.replaceChild(fr,n)});
-    }
-    target.scrollIntoView({behavior:'smooth',block:'start'});
-    d.classList.add('flash');setTimeout(function(){d.classList.remove('flash')},1600);
-    res.classList.remove('on'); D.closeMenu();
-  }
-  function render(){
-    var v=q.value.trim();
-    if(!v){res.classList.remove('on');cnt.textContent='';clearMarks();return}
-    if(!IDX.length){cnt.textContent='加载索引…';ensureIndex(function(){render()});return}
-    var terms=v.toLowerCase().split(/\s+/).filter(Boolean);
-    var hits=IDX.filter(function(it){return terms.every(function(t){return it.x.toLowerCase().indexOf(t)>=0})});
-    cnt.textContent=hits.length?hits.length+' 条命中':'无结果';
-    var out='<div class="res-h">'+hits.length+' 条命中 · 前 40 条 · 回车跳到第一条</div>';
-    if(!hits.length)out+='<div class="res-empty">没有匹配内容。试试「国补」「15%」「AliExpress」「黑五」「价保」。</div>';
-    hits.slice(0,40).forEach(function(it,i){
-      out+='<a class="res-i" tabindex="0" data-i="'+i+'" data-p="'+esc(it.p||'')+'" data-a="'+esc(it.a||'')+'">'
-        +'<span class="rt">'+esc(it.t)+'</span><span class="rq">'+hi(it.x,terms)+'</span></a>';
-    });
-    res.innerHTML=out;res._hits=hits;res._terms=terms;res.classList.add('on');
-    D.$$('.res-i',res).forEach(function(el){
-      function go(){var h=res._hits[+el.dataset.i];jump(el.dataset.p||('#'+h.d),el.dataset.a,res._terms)}
-      el.addEventListener('click',go);el.addEventListener('keydown',function(e){if(e.key==='Enter')go()});
-    });
-  }
-  q.addEventListener('focus',function(){ensureIndex(function(){})});
-  q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(render,140)});
-  q.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){q.value='';res.classList.remove('on');cnt.textContent='';clearMarks();q.blur()}
-    if(e.key==='Enter'&&res.classList.contains('on')){var f=res.querySelector('.res-i');if(f)f.click()}
-  });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();q.select()}
-  });
-  document.addEventListener('click',function(e){if(!e.target.closest('.searchbox'))res.classList.remove('on')});
-  /* 站内锚点：展开被折叠的文档 */
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a.internal, a[href^="#doc-"], a[href^="#p"]');if(!a)return;
-    var d=document.getElementById(a.getAttribute('href').slice(1));
-    if(d&&d.classList.contains('doc'))d.classList.remove('collapsed');
-  });
-  /* 跨页跳转后：展开文档、滚到锚点、按存下的词高亮 */
-  try{
-    var savedTerms=[];
-    try{savedTerms=JSON.parse(D.load('d11_jump_terms','[]'))||[]}catch(e){}
-    D.store('d11_jump_terms','[]');
-    if(location.hash){
-      var aid;
-      try{aid=decodeURIComponent(location.hash.slice(1))}catch(e){aid=location.hash.slice(1)}
-      var d=document.getElementById(aid)||document.getElementById(aid.replace(/-h-.*$/,''));
-      if(d&&d.classList&&d.classList.contains('doc'))d.classList.remove('collapsed');
-      var go=function(){
-        var t=document.getElementById(aid);
-        if(t){t.scrollIntoView({block:'start'});}
-        else if(d){d.scrollIntoView({block:'start'})}
-      };
-      /* 等布局稳定后再滚，避免图片/表格回流导致位置偏移 */
-      requestAnimationFrame(function(){setTimeout(go,60)});
-      if(savedTerms.length){
-        setTimeout(function(){
-          clearMarks();
-          var scope=(document.getElementById(aid)||{}).closest?
-            (document.getElementById(aid)||{}).closest('.doc'):null;
-          scope=scope||document.querySelector('.doc');
-          highlightIn(scope||document.body,savedTerms);
-        },220);
-      }
-      window.addEventListener('load',function(){setTimeout(go,80)});
-    }
-  }catch(e){}
-})();
-</script>
 
 </body></html>

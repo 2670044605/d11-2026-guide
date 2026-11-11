@@ -1,31 +1,31 @@
 {
-  "total": 98,
+  "total": 116,
   "categories": {
     "vps": 17,
     "cloud": 14,
     "software": 28,
-    "hardware": 13,
-    "retail": 7,
-    "travel": 5,
+    "hardware": 14,
+    "retail": 18,
+    "travel": 11,
     "lifestyle": 14
   },
   "statuses": {
-    "live": 27,
+    "live": 31,
     "upcoming": 1,
-    "regular": 55,
+    "regular": 61,
     "expired": 1,
-    "unverified": 14
+    "unverified": 22
   },
   "verdicts": {
     "worth": 17,
-    "conditional": 54,
-    "skip": 10,
-    "watch": 17
+    "conditional": 60,
+    "skip": 13,
+    "watch": 26
   },
   "evidence": {
-    "official-body": 95,
+    "official-body": 105,
     "official-search": 0,
     "media": 0,
-    "unverified": 3
+    "unverified": 11
   }
 }

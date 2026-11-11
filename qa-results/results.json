@@ -1,0 +1,150 @@
+[
+  {
+    "mode": "desktop",
+    "steps": [
+      {
+        "name": "first_render_full_data",
+        "status": "pass",
+        "result": {
+          "n": 98,
+          "count": "98 条结果 · 共 98 条收录"
+        }
+      },
+      {
+        "name": "home_screenshot_a11y",
+        "status": "pass",
+        "result": {
+          "violations": 0
+        }
+      },
+      {
+        "name": "query_filters_and_share",
+        "status": "pass",
+        "result": {
+          "shareUrl": "http://127.0.0.1:4183/?q=%E6%B5%81%E9%87%8F"
+        }
+      },
+      {
+        "name": "saved_persists_detail_back",
+        "status": "pass",
+        "result": {
+          "title": "6类一级能效家电：券后15%补贴 · 十一购物索引"
+        }
+      },
+      {
+        "name": "vps_and_recent_are_separate",
+        "status": "pass",
+        "result": {
+          "vps": "31 条结果 · 共 31 条收录",
+          "recent": "35 条结果 · 共 35 条收录",
+          "unverified": 5
+        }
+      },
+      {
+        "name": "no_overflow_and_navigation",
+        "status": "pass",
+        "result": [
+          {
+            "width": 1024,
+            "scroll": 1024
+          },
+          {
+            "width": 1440,
+            "scroll": 1440
+          }
+        ]
+      },
+      {
+        "name": "source_and_old_library_readable",
+        "status": "pass",
+        "result": {
+          "tables": 7
+        }
+      },
+      {
+        "name": "no_javascript_errors",
+        "status": "pass",
+        "result": []
+      }
+    ],
+    "errors": [],
+    "homeA11y": [],
+    "detailA11y": []
+  },
+  {
+    "mode": "phone",
+    "steps": [
+      {
+        "name": "first_render_full_data",
+        "status": "pass",
+        "result": {
+          "n": 98,
+          "count": "98 条结果 · 共 98 条收录"
+        }
+      },
+      {
+        "name": "home_screenshot_a11y",
+        "status": "pass",
+        "result": {
+          "violations": 0
+        }
+      },
+      {
+        "name": "query_filters_and_share",
+        "status": "pass",
+        "result": {
+          "shareUrl": "http://127.0.0.1:4183/?q=%E6%B5%81%E9%87%8F"
+        }
+      },
+      {
+        "name": "saved_persists_detail_back",
+        "status": "pass",
+        "result": {
+          "title": "6类一级能效家电：券后15%补贴 · 十一购物索引"
+        }
+      },
+      {
+        "name": "vps_and_recent_are_separate",
+        "status": "pass",
+        "result": {
+          "vps": "31 条结果 · 共 31 条收录",
+          "recent": "35 条结果 · 共 35 条收录",
+          "unverified": 5
+        }
+      },
+      {
+        "name": "no_overflow_and_navigation",
+        "status": "pass",
+        "result": [
+          {
+            "width": 360,
+            "scroll": 360
+          },
+          {
+            "width": 390,
+            "scroll": 390
+          },
+          {
+            "width": 412,
+            "scroll": 412
+          }
+        ]
+      },
+      {
+        "name": "source_and_old_library_readable",
+        "status": "pass",
+        "result": {
+          "tables": 7
+        }
+      },
+      {
+        "name": "no_javascript_errors",
+        "status": "pass",
+        "result": []
+      }
+    ],
+    "errors": [],
+    "homeA11y": [],
+    "detailA11y": []
+  }
+]

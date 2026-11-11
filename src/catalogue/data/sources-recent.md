@@ -139,3 +139,165 @@
 - 限制：不把旧页面展示当活动延续；未核到延期公告；票价及退款政策未取得
 - 取舍：2026-10-31已经过去，不能将其计入11月香港行程预算；需要重新找当前有效票价。
 
+## samsung-us-offer-program
+
+- Samsung 美国｜regular / conditional｜official-body
+- 官方来源：[Samsung Offers For Students, Military, Employees | Samsung US](https://www.samsung.com/us/shop/offer-program/)
+- 价格：最高30%优惠；具体商品会员价未取得
+- 核到与缺口：正文确认最高30%及参与身份；未核到2026黑五具体型号、售价、满减上限和期限。
+- 限制：须符合美国计划身份并登录验证；本次未注册；公开价、Trade-in和会员价是否叠加未核；退换、价保与按揭资格须按商品确认
+- 取舍：本来符合资格的人应把专属价加入黑五比较；不符合资格者不能用最高30%倒算到手价。
+
+## booking-genius-regular
+
+- Booking.com｜regular / conditional｜official-body
+- 官方来源：[Booking.com | Genius loyalty program | travel rewards & discounts](https://www.booking.com/genius.html)
+- 价格：Level 1指定住宿10%；Level 2为10–15%；Level 3为10–20%
+- 核到与缺口：正文确认免费会员、各档折扣、税费前计算与Level2门槛；未核到黑五2026公告。
+- 限制：本次未注册或登录；每份报价的不可退、取消截止、预付与现场税费单独核；租车折扣只计车费；保险与附加项目不可假设打折
+- 取舍：以含税、同取消条件总价比较才有意义；税费前10%不等于最终支付少10%，会员标签也不保证低于酒店直订。
+
+## jr-pass-online-vs-agency
+
+- JAPAN RAIL PASS｜regular / skip｜official-body
+- 官方来源：[Types and prices | JAPAN RAIL PASS](https://japanrailpass.net/en/purchase/price/)
+- 价格：成人普通车7日线上 JPY 50,000；海外指定代理兑换券 JPY 53,000
+- 核到与缺口：官方价格表正文核到各档JPY与渠道差异、儿童规则和Nozomi/Mizuho限制；未声称2026优惠。
+- 限制：线上以日元结算；海外代理本币按BSR汇率转换；NOZOMI/MIZUHO需要另行专用票，不能视作完全免费乘坐；入境资格、指定席预约、启用日和退款费本价格页未完整列明
+- 取舍：城市内游览或少量短途乘车难以用到50000日元票值；官方线上7日普通车还比该页海外代理基准少3000日元，代购广告需按同渠道比较。
+
+## costco-new-member-credit-card
+
+- Costco 美国｜live / skip｜official-body
+- 官方来源：[Join Costco](https://www.costco.com/join-costco.html)
+- 价格：符合条件可获 USD 65 Digital Costco Shop Card
+- 核到与缺口：正文明确65美元、new Executive membership及apply and approved；未取得完整脚注与费用，不能净额倒算会员费。
+- 限制：另需阅读脚注1/2；年费、最低消费、发卡时效和活动截止未核；信用卡需申请并获批；本次不注册、不申请；续年会费与自动续费规则未核到
+- 取舍：如果只为一次小额黑五采购，新增Executive会费和办卡条件可能超过购物卡价值；现有会员或未获批者不能把65美元算进优惠。
+
+## costco-electronics-returns
+
+- Costco 美国｜regular / conditional｜official-body
+- 官方来源：[What is Costco’s return policy?](https://customerservice.costco.com/app/answers/answer_view/a_id/1191/~/what-is-costcos-return-policy%3F)
+- 价格：未公布促销价；电子产品退货窗口90天
+- 核到与缺口：官方正文明确90天起点与所列不可退款类别；未核到黑五价格或假日额外延长。
+- 限制：线上商品可仓库退或线上发起；特殊运费处理另核；手机退货受运营商合同影响；定制商品有例外；此为退货政策，不是90天降价补差或全球联保
+- 取舍：本地购买高价电子产品可把可退窗口计入渠道选择；旅行票券的不可退条款则可能抵消少量折扣。
+
+## walmart-bf-price-match-exclusions
+
+- Walmart 美国｜regular / skip｜official-body
+- 官方来源：[Walmart Policies and Guidelines](https://corporate.walmart.com/policies)
+- 价格：未公布本轮2026活动价；官方政策不提供官网订单降价补差
+- 核到与缺口：官方Policies正文逐项写出Black Friday/Cyber Monday排除及官网订单不补差；没有核到本年活动日期。
+- 限制：实体店需结账时提出；同款型号、尺寸、颜色等必须一致；Marketplace第三方与套装不适用；部分地区例外；退货政策不等于价保；本次商城页被验证码阻断
+- 取舍：官方明确排除促销匹配与线上降价补差，先买后补差的节省假设不成立。应在可接受的当前价购买或等活动确认。
+
+## klook-taiwan-double11-bank
+
+- Klook 台湾｜live / conditional｜official-body
+- 官方来源：[Klook 優惠 - 獨家優惠碼＆特價商品 - Klook 台灣](https://www.klook.com/zh-TW/deals/)
+- 价格：ESUN333261111：满 TWD 4,000减333；CUBALL269511：5% off无低消
+- 核到与缺口：正文直接显示雙11狂歡祭、三组券码与门槛金额；不从券码261111推断生效日期或2026整段活动日程。
+- 限制：券码可见但不代表已领取或一定有名额；活动完整起止未核；95折封顶、指定卡种、支付钱包与叠加限制未核；旅行产品预约时段、取消/不可退逐单确认
+- 取舍：满4000减333的门槛与金额明确，恰好需要4000元产品时约省8.325%；为了凑券多买不需要的体验会抵消优惠。
+
+## venetian-macao-stay-dine
+
+- 澳门威尼斯人 / Sands Lifestyle｜live / conditional｜official-body
+- 官方来源：[Macau Hotel Packages | Macau Hotel Promotions | Offers | The Venetian Macao](https://www.venetianmacao.com/offers.html)
+- 价格：会员指定住宿最高30% off；江南午餐每位 MOP 558*；Hiro拉面午餐 MOP 200*
+- 核到与缺口：官方正文确认最高30%会员住宿、餐饮价与营业休息日；没有2026精确活动起止与实际房费。
+- 限制：星号对应税费/服务费规则未在汇总页展开，不视为最终全包价；酒店另有teamLab、渡轮、连住与早餐套餐，不能混作同一个套装；预约、入住窗口、黑名单日期、取消和不可退条款未核
+- 取舍：有确定午餐需求可用明确MOP价格比较；最高七折酒店需同房型同退改比价，不能与独立体验价格相加后声称套装价值。
+
+## citygate-hk-tourist-program
+
+- 香港东荟城名店仓｜live / watch｜official-body
+- 官方来源：[HOME | Citygate Outlets](https://www.citygateoutlets.com.hk/en/)
+- 价格：具体折扣、停车消费门槛未公布于首页
+- 核到与缺口：官网首页正文给出旅客和停车两项目日期及品牌，具体权益未展开；主日期对应旅客计划，status仅指计划仍在期内。
+- 限制：旅客证件、领取方式、消费门槛与停车小时数未核；品牌退换以门店规则为准；不能推定所有商品通用折扣；不是2026黑五已公布活动
+- 取舍：已计划到东涌或机场附近购物的人可继续查看领取细则；若专程交通成本高于未知礼遇，就不值得为首页标题绕路。
+
+## klook-vietnam-airport-services
+
+- Klook 越南目的地｜regular / conditional｜official-body
+- 官方来源：[Klook Deals - Exclusive Promo Codes and Offers - Klook USA](https://www.klook.com/en-US/deals/)
+- 价格：SGN VIP快速通关 USD 19.30；机场接送 USD 7.69（展示价）
+- 核到与缺口：正文显示两项服务名称与美元价，未给具体2026折扣期、预约或退改规则；不称为黑五促销。
+- 限制：车辆、人数、时段、夜间附加费及最终价格需产品页确认；需匹配航班和预约；不可退/取消期限未核；边检与签证资格不因购买服务而免除；未核到时长保证
+- 取舍：有紧张接驳安排的人可继续核服务范围；不应把19.30美元的通关服务误认为含7.69美元机场接送，或购买两项后误算重复优惠。
+
+## amazon-au-bf-watch
+
+- Amazon 澳大利亚｜unverified / watch｜unverified
+- 官方来源：[Black Friday Sale | Amazon.com.au](https://www.amazon.com.au/blackfriday)
+- 价格：未公布/本次未核到
+- 核到与缺口：入口只有早期送礼与抽奖导航；抽奖最高1000不是每人购物折扣，不能当优惠价。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认
+- 取舍：入口只有早期送礼与抽奖导航；抽奖最高1000不是每人购物折扣，不能当优惠价。
+
+## amazon-jp-bf-watch
+
+- Amazon 日本｜unverified / watch｜unverified
+- 官方来源：[Amazon ブラックフライデー 2025 | ほしいが丸ごと お得に叶う](https://www.amazon.co.jp/blackfriday)
+- 价格：未公布/本次未核到
+- 核到与缺口：标题是2025且正文没有2026优惠规则，不能把页脚2026或11月27日历当今年活动日期。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认
+- 取舍：标题是2025且正文没有2026优惠规则，不能把页脚2026或11月27日历当今年活动日期。
+
+## bestbuy-bf-watch
+
+- Best Buy｜unverified / watch｜unverified
+- 官方来源：[Best Buy Black Friday（正文未取得）](https://www.bestbuy.com/site/black-friday/black-friday-ad/pcmcat1568908370350.c?id=pcmcat1568908370350)
+- 价格：未公布/本次未核到
+- 核到与缺口：活动页未取得有效正文，不能承诺2026假日价保、会员提前购或旧款大降价。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认
+- 取舍：活动页未取得有效正文，不能承诺2026假日价保、会员提前购或旧款大降价。
+
+## target-circle-watch
+
+- Target｜unverified / watch｜unverified
+- 官方来源：[Target Circle™](https://www.target.com/c/target-circle/-/N-pzno9)
+- 价格：未公布/本次未核到
+- 核到与缺口：可见Circle、Circle Card、Circle 360是不同入口，不能把普通会员与付费配送或卡片权益混同。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认
+- 取舍：可见Circle、Circle Card、Circle 360是不同入口，不能把普通会员与付费配送或卡片权益混同。
+
+## newegg-bf-watch
+
+- Newegg｜unverified / watch｜unverified
+- 官方来源：[Just a moment...](https://www.newegg.com/Black-Friday/EventSaleStore/ID-42)
+- 价格：未公布/本次未核到
+- 核到与缺口：官方活动及退货页遭403；促销硬件可能含第三方和组合包，未核到拆退或满减条件。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认
+- 取舍：官方活动及退货页遭403；促销硬件可能含第三方和组合包，未核到拆退或满减条件。
+
+## aliexpress-double11-watch
+
+- AliExpress｜unverified / watch｜unverified
+- 官方来源：[官方入口（正文未取得）](https://www.aliexpress.com/)
+- 价格：未公布/本次未核到
+- 核到与缺口：首页与Choice入口返回空正文；无法确认某国券码、封顶与税费，更不能将美国规则套到欧洲。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认
+- 取舍：首页与Choice入口返回空正文；无法确认某国券码、封顶与税费，更不能将美国规则套到欧洲。
+
+## tiktokshop-local-bf-watch
+
+- TikTok Shop｜unverified / watch｜unverified
+- 官方来源：[Newsroom | TikTok](https://newsroom.tiktok.com/en-us/)
+- 价格：未公布/本次未核到
+- 核到与缺口：官方新闻页未读到本轮活动规则；新客券、达人券与商家券不能预设可叠加，也不是全球统一券。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认
+- 取舍：官方新闻页未读到本轮活动规则；新客券、达人券与商家券不能预设可叠加，也不是全球统一券。
+
+## ota-trip-agoda-watch
+
+- Trip.com / Agoda｜unverified / watch｜unverified
+- 官方来源：[404, Page not found!](https://www.trip.com/sale/w/6497/double11.html)
+- 价格：未公布/本次未核到
+- 核到与缺口：Trip.com入口受阻，Agoda促销页仅标题；无法验证酒店房晚、税费、可退与使用日期，不能引用旧双十一券。 本条不计为已确认活动。
+- 限制：地区、会员或新客资格待确认；满减封顶、叠加、税费与退换/价保待确认；入住/使用日期、预约与不可退规则待确认
+- 取舍：Trip.com入口受阻，Agoda促销页仅标题；无法验证酒店房晚、税费、可退与使用日期，不能引用旧双十一券。
+

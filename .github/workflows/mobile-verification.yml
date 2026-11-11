@@ -1,5 +1,7 @@
 name: Independent mobile verification
 on:
+  push:
+    branches: [agent/verify-mobile-20261111]
   workflow_dispatch:
 permissions:
   contents: read

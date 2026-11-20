@@ -1,54 +1,107 @@
-# 发布记录 · 2026 全球双十一完全指南
+# 发布记录 · 2026 年末大促指南（黑五 + 年末长期指南 + 归档）
 
 ## 线上地址
 
 **https://tsurezure.jerrylabs.dev/d11-2026-guide/**
 
-- 仓库：https://github.com/2670044605/d11-2026-guide （public）
+- 仓库：https://github.com/2670044605/d11-2026-guide
 - 托管：GitHub Pages（legacy 构建，main 分支根目录，`.nojekyll` 关闭 Jekyll 处理）
-- 证书：HTTPS 证书 approved，`https_enforced=true`（HTTP 301 → HTTPS）
-- 标准 GitHub Pages 地址 `<user>.github.io/d11-2026-guide/` 会 301 到上述自定义域名
+- 证书：HTTPS 已强制，HTTP 301 → HTTPS
+- 当前工作区版本：**v14**（2026-11-20）
+- 公网状态：**尚未发布 v14**；线上仍是 v13（commit `25aa986`）
 
-## 发布前核验（全部通过）
+## v14 变更（2026-11-20）
+
+| 项目 | 内容 |
+|---|---|
+| 新指南 | `pages/calendar.html`：2026–2027 年末日历、时区、送达截止、买/等/不买 |
+| 新指南 | `pages/december.html`：圣诞、节礼日、新年、日本福袋、礼物、退货、骗局 |
+| 新指南 | `pages/method.html`：到手价、30/90 天历史价、证据分级、AI 软文、预算 |
+| 新指南 | `pages/shipping.html`：直邮/转运/保税、DDP/DDU、税费、禁限运、退运 |
+| 新指南 | `pages/protection.html`：价保、法定退货权、保修、chargeback、礼卡、话术 |
+| 归档中心 | `archive.html` 从「双十一归档」扩为「内容归档中心」：当前/长期/历史、8 份旧文、11/10 快照、v11–v14、复审日期 |
+| 黑五状态 | `pages/bf.html` 增加 12/3「转复盘」横幅；12/3 后停止实时建议 |
+| 首页 | 首页切为「黑五 → 圣诞 → 新年」；12/3 自动把黑五行动表切为 12 月清单 |
+| 检索 | `search-index.js` 重建为 1595 条；建议词加入圣诞/节礼日/比价；页面名加新指南 |
+| 资源版本 | 全站统一 `?v=14` |
+| UI | 新增归档状态卡、过期横幅、12 月清单样式；复用原有时间轴/表格/清单组件 |
+
+## 当前目录结构
+
+```
+/
+├── index.html            年末仪表盘（黑五倒计时 + 12 月切换 + 6 份指南入口）
+├── archive.html          内容归档中心（当前/长期/历史 + 双十一 8 份 + 11/10 快照 + 版本）
+├── updates.html          更新日志（v14 / v13 / v12 / v11 + 复审日期 + 缺口）
+├── 404.html              年末站点 404
+├── pages/
+│   ├── bf.html           2026 黑五网一完全指南（当前，12/3 转复盘）
+│   ├── calendar.html     2026–2027 年末大促日历
+│   ├── december.html     圣诞、节礼日与新年
+│   ├── method.html       比价、证据与预算
+│   ├── shipping.html     跨境物流、税费与清关
+│   ├── protection.html   价保、退货、保修与支付
+│   ├── p00.html … p41.html  8 份双十一归档文档（noindex，保留原 URL）
+├── site.css              共享样式（阅读 + 黑五 + 长期指南 + 归档状态）
+├── site.js               共享交互（主题/密度/字号/目录/倒计时/清单/到期切换）
+├── search.js             共享检索（索引懒加载 / 键盘 / 跨页高亮）
+├── search-index.js       检索索引（1595 条：旧 1194 + 新 401）
+├── sitemap.xml           只列当前有效页面（首页 / bf / 5 份指南 / updates / archive）
+├── robots.txt  favicon.svg  .nojekyll
+```
+
+## 内容状态规则
+
+| 状态 | 页面 | 处理 |
+|---|---|---|
+| 当前活动 | 首页、`bf.html` | 只到 2026-12-02；12/3 起自动显示复盘横幅、撤实时建议 |
+| 长期指南 | `calendar`、`december`、`method`、`shipping`、`protection` | 按季度/年度复审；不写未核实折扣 |
+| 历史归档 | `p00`–`p41`、11/10 快照、v11–v13 | 保留原文/URL；加归档横幅、`noindex,follow`；撤出 sitemap/主入口 |
+| 记录 | `updates.html` | 只追加变更，不改写历史 |
+
+## 发布前核验
 
 | 项目 | 结果 |
 |---|---|
-| 结构与链接 | 9 页 / 120 个站内引用 / **0 失效**（含重复 id、锚点可达、索引锚点） |
-| 敏感信息 | 密钥、token、邮箱、手机号、内网地址、`minis://` 残留 **均为 0** |
-| 外部请求面 | 仅正文内容链接，无外部 CSS/JS/字体/埋点，离线可用 |
-| 首页体积 | 13 KB（检索索引 216 KB 外置 + 懒加载） |
-| 单页最大 | 92 KB（跨境详版） |
-| 桌面端 | 首页/文档页/检索/跨页跳转/锚点定位/折叠/深浅色/密度字号 全部实测通过 |
-| 移动端 | 390px 下**无横向溢出**、抽屉侧栏、表格独立横向滚动、顶栏 85px |
-| 跨页检索 | 首页命中 62 条 → 跳转文档页锚点定位（距顶 70px）+ 命中词高亮 17 处 |
-| 同页检索 | 就地高亮 72 处，不重新导航 |
-| 外部来源抽查 | 商务部原文 / PRNewswire / 新浪财经 三个链接均 200 |
-
-## 目录结构
-
-```
-publish/
-├── index.html          首页仪表盘（KPI + 此刻该做什么 + 8 份文档入口）
-├── pages/p00..p41.html 8 份文档页
-├── site.css            共享样式（浅/深色 + 4 个响应式断点 + 打印样式）
-├── site.js             共享脚本（主题/密度/字号/折叠/抽屉/目录高亮）
-├── search-index.js     全局检索索引（949 条，懒加载）
-├── favicon.svg  robots.txt  sitemap.xml  404.html  .nojekyll
-```
+| 站内链接 | 全部 HTML 交叉检查，无断链；归档旧 URL 仍可达 |
+| 锚点 | 所有 `id` 唯一；目录/搜索索引锚点可达 |
+| 检索索引 | 1595 条；新页条目全部指向存在的页面与锚点 |
+| 资源版本 | 全站统一 `?v=14`，无 v13 残留 |
+| 外部请求 | 仅正文内容链接；无外部 CSS/JS/字体/埋点，离线可读 |
+| 移动端 | 需在 368–390px 复核：无横向溢出、抽屉目录、表格滑动、清单可点 |
+| 桌面端 | 需在 1440px 复核：三栏布局、目录、阅读进度、主题切换 |
+| 归档策略 | 旧页保留、加横幅、撤出主入口/sitemap、`noindex` |
+| 时效切换 | 2026-12-03 后首页/黑五页显示复盘状态；需在浏览器改系统日期或用 JS 模拟验证 |
 
 ## 重新发布
 
 ```sh
-sh /var/minis/workspace/双十一2026/web/package.sh   # 构建 + 注入 meta + 自检
-cd /var/minis/workspace/双十一2026/publish
-git add -A && git commit -m "..." && git push origin main
+# 在仓库根目录
+node --check site.js
+node --check search.js
+node --check search-index.js
+python3 -m http.server 3000 --bind 0.0.0.0
+# 打开 http://localhost:3000/ 做最终检查
+
+git add -A
+git commit -m "新增年末长期指南与归档中心"
+git push origin main
 ```
 
-`package.sh` 会自动跑链接自检与敏感信息扫描，任一失败即中止。
-Pages 构建约需 1–3 分钟，可用 `gh api repos/<user>/d11-2026-guide/pages --jq .status` 查询。
+GitHub Pages 构建约 1–3 分钟；发布后检查：
 
-## 已知取舍
+```sh
+curl -s -o /dev/null -w '%{http_code}\n' https://tsurezure.jerrylabs.dev/d11-2026-guide/
+curl -s https://tsurezure.jerrylabs.dev/d11-2026-guide/ | grep -o 'site.css?v=[0-9]*'
+curl -s -o /dev/null -w '%{http_code}\n' https://tsurezure.jerrylabs.dev/d11-2026-guide/pages/calendar.html
+```
 
-- 跨页跳转后**保留命中词高亮**（通过 localStorage 传递搜索词）；若浏览器禁用 localStorage 则仅跳转不高亮
-- 检索索引外置为 216 KB 的 JS，首次聚焦搜索框时才加载
-- `backdrop-filter` 毛玻璃未使用：iOS WebKit 多实例合成会导致渲染卡死
+## 已知取舍 / 缺口
+
+- 归档旧页保留原 `/pages/` URL，避免外链失效；已 `noindex`，不再进入 sitemap。
+- 站内搜索仍能检索归档内容，结果带「归档 ·」前缀；这是有意保留的历史可查性。
+- Amazon US、Target、Costco 的 2026 官方活动页未取得，正文标为「媒体」；Best Buy 价保完整条款以官方页面为准。
+- 2027 年零售档期尚未公布；日历只写公共假日/日历节点，不写具体折扣承诺。
+- 节礼日门店营业时间、承运商 2026 具体 cutoff 未逐家回读；正文只给规划缓冲。
+- 法定权利部分是购物指南，不是法律意见；个案请咨询当地消费者机构/律师。
+- 12/3 后应把 `bf.html` 从 sitemap 移除，并按归档中心的状态表更新。

@@ -9,7 +9,7 @@
   var q=$('#q'), res=$('#results'), cnt=$('#searchcount'), box=$('#searchbox'), clr=$('#searchClear');
   if(!q||!res) return;
 
-  var VER=window.D11_VER||'12';
+  var VER=window.D11_VER||'14';
   var IDX=[];
   var loading=false, pending=null;
   var timer=null, active=-1, hits=[], terms=[];
@@ -17,10 +17,12 @@
 
   var RECENT_KEY='d11_recent';
   var JUMP_KEY='d11_jump_terms';
-  var SUGGEST=['国补','价保','黑五','AliExpress','智能眼镜','以旧换新'];
+  var SUGGEST=['黑五','圣诞','节礼日','价保','转运','关税','比价','礼卡'];
   var PAGE_NAMES={
-    p00:'一页速查',p10:'总纲 · 已核验事实',p20:'大陆详版',p21:'汽车 · 线下 · 防坑',
-    p30:'跨境速读',p31:'跨境详版',p40:'区域速读',p41:'区域详版'
+    bf:'黑五网一指南',calendar:'年末日历',december:'圣诞与新年',method:'比价与预算',
+    shipping:'跨境物流',protection:'价保与支付',archive:'内容归档',updates:'更新日志',
+    p00:'归档 · 一页速查',p10:'归档 · 总纲',p20:'归档 · 大陆详版',p21:'归档 · 汽车线下防坑',
+    p30:'归档 · 跨境速读',p31:'归档 · 跨境详版',p40:'归档 · 区域速读',p41:'归档 · 区域详版'
   };
   var SKIP_TAGS=/^(SCRIPT|STYLE|CODE|PRE|MARK|KBD)$/;
 
@@ -161,7 +163,7 @@
         return '<button type="button" data-q="'+esc(t)+'">'+esc(t)+'</button>';
       }).join('')+'</div>';
     }
-    out+='<div class="res-sec">'+(recent.length?'试试这些':'输入关键词，检索 8 份文档')+'</div>';
+    out+='<div class="res-sec">'+(recent.length?'试试这些':'输入关键词，检索黑五、年末指南与归档')+'</div>';
     out+='<div class="res-sug">'+SUGGEST.map(function(t){
       return '<button type="button" data-q="'+esc(t)+'">'+esc(t)+'</button>';
     }).join('')+'</div>';
@@ -177,7 +179,7 @@
   function showLoading(){
     cnt.textContent='加载索引…';
     res.innerHTML='<div class="res-h"><span>正在加载检索索引</span></div>'
-      +'<div class="res-empty">首次检索需加载约 210 KB 索引，仅加载一次；之后搜索将即时完成。</div>';
+      +'<div class="res-empty">首次检索需加载约 360 KB 索引，仅加载一次；之后搜索将即时完成。</div>';
     openPanel();
   }
   function showError(){
@@ -199,13 +201,21 @@
       if(s>=0) scored.push({it:IDX[i],s:s,i:i});
     }
     scored.sort(function(a,b){return b.s-a.s||a.i-b.i});
-    var total=scored.length;
-    hits=scored.slice(0,40).map(function(x){return x.it});
+    /* 同一页同一节只保留得分最高的一条，避免一个长表格刷屏 */
+    var picked=[], seenGroup={};
+    for(var gi=0;gi<scored.length;gi++){
+      var gkey=scored[gi].it.p+'|'+(scored[gi].it.a||scored[gi].it.t);
+      if(seenGroup[gkey]) continue;
+      seenGroup[gkey]=1;
+      picked.push(scored[gi]);
+    }
+    var total=picked.length;
+    hits=picked.slice(0,40).map(function(x){return x.it});
 
     if(!hits.length){
       cnt.textContent='无结果';
       res.innerHTML='<div class="res-h"><span>没有匹配内容</span></div>'
-        +'<div class="res-empty">试试更短的关键词，例如「国补」「价保」「黑五」「AliExpress」。</div>';
+        +'<div class="res-empty">试试更短的关键词，例如「黑五」「圣诞」「价保」「转运」「关税」。</div>';
       active=-1;
       openPanel();
       return;

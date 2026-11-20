@@ -1,4 +1,4 @@
-window.__D11_VER='12';
+window.__D11_VER='14';
 
 (function(){
   'use strict';
@@ -408,5 +408,65 @@ window.__D11_VER='12';
   window.addEventListener('afterprint',function(){
     docs.forEach(function(d,i){setDoc(d,!!printState[i])});
     syncUI();
+  });
+
+  /* 黑五倒计时：静态页也能按访问日期显示阶段，不依赖外部接口 */
+  function updateBF(nowOverride){
+    var days=document.querySelectorAll('[data-bf-days]');
+    var phases=document.querySelectorAll('[data-bf-phase]');
+    if(!days.length&&!phases.length) return;
+    var now=nowOverride||new Date();
+    /* 统一按北京时间（UTC+8）算日历日，避免浏览器时区导致「提前/延后一天」 */
+    var bj=new Date(now.getTime()+8*3600000);
+    var todayUtc=Date.UTC(bj.getUTCFullYear(),bj.getUTCMonth(),bj.getUTCDate());
+    var targetUtc=Date.UTC(2026,10,27);
+    var n=Math.round((targetUtc-todayUtc)/86400000);
+    var label;
+    if(n>0) label='距黑五 '+n+' 天';
+    else if(n===0) label='今天黑五 · 11/27';
+    else if(n===-1||n===-2) label='黑五周末 · 网一 11/30';
+    else if(n===-3) label='今天网一 · 11/30';
+    else if(n>=-5) label='Cyber Week · 12 月将至';
+    else label='黑五网一已结束 · 看归档';
+    days.forEach(function(el){el.textContent=n>0?String(n):'0'});
+    phases.forEach(function(el){el.textContent=label});
+
+    /* 12/3 起：黑五页/首页显示“已结束”，把读者导向复盘与 12 月指南 */
+    var ended=now.getTime()>=Date.UTC(2026,11,3)-8*3600000;
+    document.body.classList.toggle('post-bf',ended);
+    $$('[data-bf-expiry]').forEach(function(el){el.hidden=!ended});
+    $$('[data-bf-current]').forEach(function(el){el.hidden=ended});
+    $$('[data-bf-after]').forEach(function(el){el.hidden=!ended});
+  }
+  window.D11.updateBF=updateBF;
+  updateBF();
+
+  /* 黑五清单：勾选状态保存在本机，换页不丢；不上传任何数据 */
+  var bfChecks=$$('input[data-bf-check]');
+  if(bfChecks.length){
+    var bfKey=document.body.getAttribute('data-check-key')||'d11_bf_check';
+    var bfSaved={};
+    try{bfSaved=JSON.parse(load(bfKey,'{}'))||{}}catch(e){bfSaved={}}
+    var saveBF=function(){
+      var out={};
+      bfChecks.forEach(function(c){
+        if(c.checked) out[c.getAttribute('data-bf-check')]=1;
+      });
+      store(bfKey,JSON.stringify(out));
+    };
+    bfChecks.forEach(function(c){
+      c.checked=!!bfSaved[c.getAttribute('data-bf-check')];
+      c.addEventListener('change',saveBF);
+    });
+    var bfReset=$('[data-bf-reset]');
+    if(bfReset) bfReset.addEventListener('click',function(){
+      bfChecks.forEach(function(c){c.checked=false});
+      store(bfKey,'{}');
+    });
+  }
+
+  /* 打印清单：沿用全局打印样式 */
+  $$('[data-print]').forEach(function(b){
+    b.addEventListener('click',function(){window.print()});
   });
 })();

@@ -9,7 +9,7 @@
   var q=$('#q'), res=$('#results'), cnt=$('#searchcount'), box=$('#searchbox'), clr=$('#searchClear');
   if(!q||!res) return;
 
-  var VER=window.D11_VER||'14';
+  var VER=window.D11_VER||'15';
   var IDX=[];
   var loading=false, pending=null;
   var timer=null, active=-1, hits=[], terms=[];
@@ -17,10 +17,10 @@
 
   var RECENT_KEY='d11_recent';
   var JUMP_KEY='d11_jump_terms';
-  var SUGGEST=['黑五','圣诞','节礼日','价保','转运','关税','比价','礼卡'];
+  var SUGGEST=['感恩节','黑五','圣诞','礼物','出行','价保','转运','关税'];
   var PAGE_NAMES={
-    bf:'黑五网一指南',calendar:'年末日历',december:'圣诞与新年',method:'比价与预算',
-    shipping:'跨境物流',protection:'价保与支付',archive:'内容归档',updates:'更新日志',
+    bf:'黑五网一指南',thanksgiving:'感恩节',calendar:'年末日历',december:'圣诞与新年',method:'比价与预算',
+    shipping:'跨境物流',protection:'价保与支付',gifts:'礼物与送礼',travel:'年末出行',archive:'内容归档',updates:'更新日志',
     p00:'归档 · 一页速查',p10:'归档 · 总纲',p20:'归档 · 大陆详版',p21:'归档 · 汽车线下防坑',
     p30:'归档 · 跨境速读',p31:'归档 · 跨境详版',p40:'归档 · 区域速读',p41:'归档 · 区域详版'
   };
@@ -179,7 +179,7 @@
   function showLoading(){
     cnt.textContent='加载索引…';
     res.innerHTML='<div class="res-h"><span>正在加载检索索引</span></div>'
-      +'<div class="res-empty">首次检索需加载约 360 KB 索引，仅加载一次；之后搜索将即时完成。</div>';
+      +'<div class="res-empty">首次检索需加载约 430 KB 索引，仅加载一次；之后搜索将即时完成。</div>';
     openPanel();
   }
   function showError(){

@@ -1037,23 +1037,69 @@ html[data-theme="dark"] mark{background:#8a6d1f;color:#fff}
   --bf-ink:#74390f;
 }
 html[data-theme="dark"]{
-  --bf:#ffb168;
-  --bf-2:#e58a36;
-  --bf-soft:#2b1b10;
-  --bf-line:#5c3a22;
-  --bf-ink:#ffd2a8;
+  --bf:#f3b56d;
+  --bf-2:#d99148;
+  --bf-soft:#1b2721;
+  --bf-line:#3a4d3f;
+  --bf-ink:#f0c995;
 }
+/* 黑五封面：浅色是暖纸/松绿，深色是深松绿；不再用大面积棕黑+橙光 */
 .hero.bf-hero{
+  color:#21332e;
   background:
-    radial-gradient(120% 150% at 100% 0%,rgba(255,153,64,.4),transparent 56%),
-    radial-gradient(90% 120% at 0% 100%,rgba(224,106,31,.24),transparent 60%),
-    linear-gradient(135deg,#2a160d 0%,#3a2113 48%,#1b1210 100%);
+    radial-gradient(110% 140% at 100% 0%,rgba(218,154,77,.26),transparent 56%),
+    radial-gradient(90% 120% at 0% 100%,rgba(11,116,102,.12),transparent 62%),
+    linear-gradient(135deg,#fbf7ee 0%,#f6ecdc 52%,#eef4ed 100%);
+  box-shadow:0 24px 54px -34px rgba(52,58,44,.46);
 }
-.hero.bf-hero .hero-bar:before{background:#ffb15c}
-.hero.bf-hero .kpi b{color:#ffd08a}
-.hero.bf-hero .kpi:hover{background:rgba(255,255,255,.11)}
-.hero.bf-hero .hero-bar span{color:rgba(255,237,218,.6)}
-.hero.bf-hero .sub{color:rgba(255,241,226,.76)}
+.hero.bf-hero:after{
+  background-image:
+    linear-gradient(rgba(39,61,51,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(39,61,51,.055) 1px,transparent 1px);
+}
+.hero.bf-hero .hero-bar{
+  background:rgba(255,255,255,.42);
+  border-bottom-color:rgba(35,58,53,.12);
+  color:#65756d;
+}
+.hero.bf-hero .hero-bar:before{background:#bd6a2e;box-shadow:0 0 0 3px rgba(189,106,46,.12)}
+.hero.bf-hero .hero-bar span{color:#78857d}
+.hero.bf-hero h1{color:#1f302b}
+.hero.bf-hero .sub{color:#55655e}
+.hero.bf-hero .kpi{
+  background:rgba(255,255,255,.66);
+  border-color:rgba(35,58,53,.12);
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset;
+}
+.hero.bf-hero .kpi:hover{background:#fff;border-color:rgba(35,58,53,.24)}
+.hero.bf-hero .kpi b{color:#9a4d17}
+.hero.bf-hero .kpi span{color:#67766e}
+html[data-theme="dark"] .hero.bf-hero{
+  color:#e8f3ed;
+  background:
+    radial-gradient(120% 150% at 100% 0%,rgba(224,145,70,.26),transparent 56%),
+    radial-gradient(90% 120% at 0% 100%,rgba(47,196,157,.18),transparent 60%),
+    linear-gradient(135deg,#0a1f1b 0%,#123029 55%,#0b1d22 100%);
+  box-shadow:0 24px 60px -30px rgba(3,20,16,.7);
+}
+html[data-theme="dark"] .hero.bf-hero:after{
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+}
+html[data-theme="dark"] .hero.bf-hero .hero-bar{
+  background:rgba(255,255,255,.055);
+  border-bottom-color:rgba(255,255,255,.1);
+  color:rgba(232,243,237,.7);
+}
+html[data-theme="dark"] .hero.bf-hero .hero-bar:before{background:#f0b56d;box-shadow:none}
+html[data-theme="dark"] .hero.bf-hero .hero-bar span{color:rgba(232,243,237,.55)}
+html[data-theme="dark"] .hero.bf-hero h1{color:#f3faf6}
+html[data-theme="dark"] .hero.bf-hero .sub{color:rgba(232,243,237,.76)}
+html[data-theme="dark"] .hero.bf-hero .kpi{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13);box-shadow:none}
+html[data-theme="dark"] .hero.bf-hero .kpi:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.24)}
+html[data-theme="dark"] .hero.bf-hero .kpi b{color:#f3c477}
+html[data-theme="dark"] .hero.bf-hero .kpi span{color:rgba(232,243,237,.62)}
 
 .bf-notice{
   display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;
